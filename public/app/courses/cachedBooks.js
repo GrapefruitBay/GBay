@@ -1,4 +1,4 @@
-app.factory('cachedCourses', function(CourseResource) {
+app.factory('cachedBooks', function(CourseResource) {
     var cachedCourses;
 
     return {

@@ -1,8 +1,8 @@
-var Course = require('mongoose').model('Course');
+var Book = require('mongoose').model('Book');
 
 module.exports = {
     getAllCourses: function(req, res, next) {
-        Course.find({}).exec(function(err, collection) {
+        Book.find({}).exec(function(err, collection) {
             if (err) {
                 console.log('Courses could not be loaded: ' + err);
             }
@@ -11,12 +11,12 @@ module.exports = {
         })
     },
     getCourseById: function(req, res, next) {
-        Course.findOne({_id: req.params.id}).exec(function(err, course) {
+        Book.findOne({_id: req.params.id}).exec(function(err, book) {
             if (err) {
                 console.log('Course could not be loaded: ' + err);
             }
 
-            res.send(course);
+            res.send(book);
         })
     }
 };
