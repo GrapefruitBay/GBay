@@ -4,12 +4,13 @@ var rootPath = path.normalize(__dirname + '/../../')
 module.exports = {
     development: {
         rootPath: rootPath,
-        db: 'mongodb://localhost/telerikacademycourses',
+        //db: 'mongodb://localhost/telerikacademycourses',
+        db: 'mongodb://team21:telerik@ds035985.mongolab.com:35985/grapefruit',
         port: process.env.PORT || 3030
     },
     production: {
         rootPath: rootPath,
-        db: 'mongodb://admin:dsadsadsadsadsadsadsaewerwewtewfdfsgfsdfdsfefdsgfdhtrytett@ds027328.mongolab.com:27328/telerikacademycourses',
+        db: 'mongodb://team21:telerik@ds035985.mongolab.com:35985/grapefruit',
         port: process.env.PORT || 3030
     }
 }
