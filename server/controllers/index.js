@@ -1,7 +1,7 @@
-var usersController = require('../controllers/usersController');
-var coursesController = require('../controllers/coursesController');
+var usersController = require('./usersController');
+var booksController = require('./booksController');
 
 module.exports = {
     users: usersController,
-    courses: coursesController
+    books: booksController
 }

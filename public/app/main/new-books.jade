@@ -3,4 +3,4 @@ div(ng-repeat="book in books | orderBy: '-published' | limitTo: 10")
         .col-md-3
             | {{ book.published }}
         .col-md-9
-            a(href="#/courses/{{ course._id }}") {{ book.title }}
+            a(href="#/books/{{ book._id }}") {{ book.title }}
