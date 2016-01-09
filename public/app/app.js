@@ -1,54 +1,37 @@
-var app = angular.module('app', ['ngResource', 'ngRoute']).value('toastr', toastr);
+(function () {
+    'use strict';
 
-app.config(function($routeProvider, $locationProvider) {
-    // $locationProvider.html5Mode(true);
+    function config() {
 
-    var routeUserChecks = {
-        adminRole: {
-            authenticate: function(auth) {
-                return auth.isAuthorizedForRole('admin');
+        var routeUserChecks = {
+            adminRole: {
+                authenticate: function(auth) {
+                    return auth.isAuthorizedForRole('admin');
+                }
+            },
+            authenticated: {
+                authenticate: function(auth) {
+                    return auth.isAuthenticated();
+                }
             }
-        },
-        authenticated: {
-            authenticate: function(auth) {
-                return auth.isAuthenticated();
+        };
+    }
+
+    function run($rootScope, $location) {
+        $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
+            if (rejection === 'not authorized') {
+                $location.path('/');
             }
-        }
-    };
+        })
+    }
 
-    $routeProvider
-        .when('/', {
-            templateUrl: '/partials/main/home',
-            controller: 'MainCtrl'
-        })
-        .when('/books', {
-            templateUrl: '/partials/books/books-list',
-            controller: 'BooksListCtrl'
-        })
-        .when('/books/:id', {
-            templateUrl: '/partials/books/book-details',
-            controller: 'BookDetailsCtrl'
-        })
-        .when('/signup', {
-            templateUrl: '/partials/account/signup',
-            controller: 'SignUpCtrl'
-        })
-        .when('/profile', {
-            templateUrl: '/partials/account/profile',
-            controller: 'ProfileCtrl',
-            resolve: routeUserChecks.authenticated
-        })
-        .when('/admin/users', {
-            templateUrl: '/partials/admin/users-list',
-            controller: 'UserListCtrl',
-            resolve: routeUserChecks.adminRole
-        })
-});
-
-app.run(function($rootScope, $location) {
-    $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
-        if (rejection === 'not authorized') {
-            $location.path('/');
-        }
-    })
-});
+    angular.module('app.services', []);
+    angular.module('app.directives', []);
+    angular.module('app.filters', []);
+    angular.module('app.controllers', ['app.services']);
+    angular.module('app', ['ngResource', 'ngRoute', 'app.services', 'app.directives', 'app.filters', 'app.controllers'])
+        .config([config])
+        .run(['$rootScope', '$location', run])
+        .value('toastr', toastr)
+        .constant('baseServiceUrl', 'http://localhost:3030/');
+}());
