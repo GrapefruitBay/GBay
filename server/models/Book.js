@@ -8,6 +8,7 @@ var booksSchema = mongoose.Schema({
     tags: [String],
     genre: String,
     price: Number,
+    quantity: Number,
     description: String,
     reviews: [{
         author: String,
@@ -19,7 +20,7 @@ var booksSchema = mongoose.Schema({
 
 var Book = mongoose.model('Book', booksSchema);
 
-module.exports.seedInitialCourses = function() {
+module.exports.seedInitialBooks = function() {
     Book.find({}).exec(function(err, collection) {
         if (err) {
             console.log('Cannot find book: ' + err);
@@ -34,6 +35,7 @@ module.exports.seedInitialCourses = function() {
                 genre: 'Fantasy',
                 tags: ['hobbits'],
                 price: 123.45,
+                quantity: 10,
                 description: 'Mnogo yako',
                 reviews: [{
                     author: 'Az',

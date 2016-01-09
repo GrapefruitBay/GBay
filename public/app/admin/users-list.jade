@@ -1,5 +1,9 @@
 .container
     table.table
         tr(ng-repeat="user in users")
-            td {{ user.firstName }}
-            td {{ user.lastName }}
+            td {{ user.username }}
+            td {{ user.firstName }} {{ user.lastName }}
+            td {{ user.cart.length }}
+            td(ng-show="identity.currentUser.isAdmin()")
+                .pull-right
+                    a.btn.btn-warning(href="#/") Edit/Remove
