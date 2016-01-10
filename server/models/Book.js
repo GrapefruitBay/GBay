@@ -7,7 +7,7 @@ var booksSchema = mongoose.Schema({
     ISBN: Number,
     published: Number,
     tags: [String],
-    genre: String,
+    genres: [String],
     price: Number,
     quantity: Number,
     description: String,
@@ -34,8 +34,8 @@ module.exports.seedInitialBooks = function() {
                 author: 'AZ',
                 ISBN: 9780261103566,
                 published: 2000,
-                genre: 'Fantasy',
-                tags: ['hobbits'],
+                genres: ['Fantasy'],
+                tags: ['hobbits', 'Fantasy'],
                 price: 123.45,
                 quantity: 10,
                 description: 'Mnogo yako',
@@ -45,6 +45,9 @@ module.exports.seedInitialBooks = function() {
                     rating: 5
                 }],
                 imageUrl: 'https://www.orangecenter.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/9/7/9780261103566.jpg'});
+            console.log('book added');
             }
+
+
     });
 };

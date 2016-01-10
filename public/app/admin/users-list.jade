@@ -1,5 +1,10 @@
 .container
     table.table
+        tr
+            th UserName
+            th Name
+            th Items in shopping cart
+            th(ng-show="identity.currentUser.isAdmin()")
         tr(ng-repeat="user in users")
             td {{ user.username }}
             td {{ user.firstName }} {{ user.lastName }}

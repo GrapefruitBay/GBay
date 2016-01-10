@@ -1,8 +1,13 @@
 app.controller('BookPublishCtrl', function($scope, $location, BookEdit, notifier) {
-    $scope.publishBook = function(book) {
+    $scope.publish = function(book) {
+
+        book.type = 'book';
+        book.genres = book.genres.split(' ');
+        book.tags = book.tags.split(' ');
+        console.log(book)
         BookEdit.publish(book).then(function() {
             notifier.success('Book published successfully!');
-            $location.path('/books/' + book._id);
+            $location.path('/books/publish');
         })
     }
 });
