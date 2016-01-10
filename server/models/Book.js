@@ -4,6 +4,7 @@ var booksSchema = mongoose.Schema({
     type: String,
     title: String,
     author: String,
+    ISBN: Number,
     published: Number,
     tags: [String],
     genre: String,
@@ -31,6 +32,7 @@ module.exports.seedInitialBooks = function() {
             Book.create({type: 'book',
                 title: 'LOTR',
                 author: 'AZ',
+                ISBN: 9780261103566,
                 published: 2000,
                 genre: 'Fantasy',
                 tags: ['hobbits'],
@@ -39,7 +41,8 @@ module.exports.seedInitialBooks = function() {
                 description: 'Mnogo yako',
                 reviews: [{
                     author: 'Az',
-                    content: 'Alabala'
+                    content: 'Alabala',
+                    rating: 5
                 }],
                 imageUrl: 'https://www.orangecenter.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/9/7/9780261103566.jpg'});
             }

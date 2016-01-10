@@ -16,8 +16,7 @@ module.exports = function (app, config) {
     app.use(session({
         secret: 'grapefruit fresh',
         resave: false,
-        saveUninitialized: true,
-        cookie: {secure: true}
+        saveUninitialized: true
     }));
     app.use(stylus.middleware(
         {

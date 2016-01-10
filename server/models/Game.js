@@ -36,7 +36,8 @@ module.exports.seedInitialGames = function() {
                 description: 'For kids over 6 years',
                 reviews: [{
                     author: 'Az',
-                    content: 'decka ral\'ta'
+                    content: 'decka ral\'ta',
+                    rating: 3
                 }],
                 imageUrl: 'https://www.orangecenter.bg/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/0/8/0871772002529.jpg'});
         }
