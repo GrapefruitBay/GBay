@@ -52,7 +52,7 @@
                         td(role='gridcell')
                             span {{game.manufacturer}}
                         td(role='gridcell')
-                            span {{game.price}}
+                            span {{game.price}} $
                         td(role='gridcell')
                             span {{game.quantity}}
                         td(role='gridcell')
@@ -67,10 +67,12 @@
                     span.k-link.k-pager-nav 1
                 li
                     span.k-state-selected 1
-                li
-                    a.k-link(tabindex='-1', href='#', data-page='2') 2
+                //li
+                //    a.k-link(tabindex='-1', href='#', data-page='2') 2
             a.k-link.k-pager-nav(href='#', title='Go to the next page', data-page='2', tabindex='-1')
                 span.k-icon.k-i-arrow-e Go to the next page
             a.k-link.k-pager-nav.k-pager-last(href='#', title='Go to the last page', data-page='2', tabindex='-1')
                 span.k-icon.k-i-seek-e Go to the last page
-            span.k-pager-info.k-label 1 - 5 of 9 items
+            span.k-pager-info.k-label(ng-if="games.length < 5") 1 - {{games.length}} of {{games.length}}
+            span.k-pager-info.k-label(ng-if="games.length >= 5")  1 - 5 of {{games.length}}
+    br
