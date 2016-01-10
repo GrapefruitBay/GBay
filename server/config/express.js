@@ -5,16 +5,24 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport');
 
-module.exports = function(app, config) {
+module.exports = function (app, config) {
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
     app.use(cookieParser());
-    app.use(bodyParser());
-    app.use(session({secret: 'magic unicorns'}));
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+    app.use(bodyParser.json());
+    app.use(session({
+        secret: 'grapefruit fresh',
+        resave: false,
+        saveUninitialized: true,
+        cookie: {secure: true}
+    }));
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/public',
-            compile: function(str, path) {
+            compile: function (str, path) {
                 return stylus(str).set('filename', path);
             }
         }
@@ -22,4 +30,4 @@ module.exports = function(app, config) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + '/public'));
-}
+};
