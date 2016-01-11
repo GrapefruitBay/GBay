@@ -29,5 +29,17 @@ module.exports = {
 
             res.send(book);
         })
+    },
+    updateBook: function(req, res, next) {
+        if (req.user.roles.indexOf('admin') > -1) {
+            var updatedBookData = req.body;
+
+            Book.update({_id: req.body._id}, updatedBookData, function() {
+                res.end();
+            })
+        }
+        else {
+            res.send({reason: 'You do not have permissions!'})
+        }
     }
 };

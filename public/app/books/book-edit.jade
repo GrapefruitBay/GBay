@@ -1,0 +1,47 @@
+.container
+   .well
+      form.form-horizontal(name="editBookForm")
+         fieldset
+            legend Edit book
+            .form-group
+               label.col-md-2.control-label(for="title") Title*
+               .col-md-10
+                  input.form-control(type="text",  placeholder="Title", ng-model="book.title", required)
+            .form-group
+               label.col-md-2.control-label(for="author") Author*
+               .col-md-10
+                  input.form-control(type="text",  placeholder="Author", ng-model="book.author", required)
+            .form-group
+               label.col-md-2.control-label(for="isbn") ISBN*
+               .col-md-4
+                  input.form-control(type="text",  placeholder="ISBN", ng-model="book.ISBN", required)
+               label.col-md-2.control-label(for="quantity") Quantity*
+               .col-md-4
+                  input.form-control(type="number", ng-model="book.quantity", required)
+            // TODO: add yearPicker
+            //.form-group
+            //    label.col-md-2.control-label(for="password") Password
+            //    .col-md-10
+            //        input.form-control(type="password",  placeholder="Password", ng-model="user.password", required)
+            // TODO: repeat without commas but spaces
+            .form-group
+               label.col-md-2.control-label(for="genre") Genres*
+               .col-md-10
+                  input.form-control(type="text", placeholder="enter genre(s) separated by space", ng-model="book.genres", required)
+            // TODO: repeat without commas but spaces
+            .form-group
+               label.col-md-2.control-label(for="tags") Tags*
+               .col-md-10
+                  input.form-control(type="text", placeholder="enter tag(s) separated by space", ng-model="book.tags", required)
+            .form-group
+               label.col-md-2.control-label(for="description") Description
+               .col-md-10
+                  textarea.form-control(rows="2", placeholder="Enter description", ng-model="book.description")
+            .form-group
+               label.col-md-2.control-label(for="image") Image URL*
+               .col-md-10
+                  input.form-control(type="text", placeholder="Image", ng-model="book.imageUrl", required)
+            .pull-right
+               button.btn.btn-success(ng-click="editBook(book)", ng-disabled="editBookForm.$invalid") Edit
+               a.btn.btn-primary(href="#/") Delete
+               a.btn.btn-danger(href="#/") Cancel

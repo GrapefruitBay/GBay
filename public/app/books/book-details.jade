@@ -6,3 +6,5 @@
     ul
         li(ng-repeat="tag in book.tags") {{ tag }}
     p {{ book.published}}
+    .pull-right(ng-show="identity.currentUser.isAdmin()")
+        a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
