@@ -37,6 +37,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/partials/books/book-details',
             controller: 'BookDetailsCtrl'
         })
+        .when('/books/:id/review', {
+            templateUrl: '/partials/books/book-review',
+            controller: 'BookReviewCtrl'
+        })
         .when('/games', {
             templateUrl: '/partials/games/games-list',
             controller: 'GamesListCtrl'

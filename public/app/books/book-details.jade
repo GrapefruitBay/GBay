@@ -6,5 +6,9 @@
     ul
         li(ng-repeat="tag in book.tags") {{ tag }}
     p {{ book.published}}
+    ul Reviews
+        li(ng-repeat="review in book.reviews") {{ review.content }}
+        li(ng-show="identity.isAuthenticated()")
+            a(href="#/books/{{book._id}}/review") Add review
     .pull-right(ng-show="identity.currentUser.isAdmin()")
         a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
