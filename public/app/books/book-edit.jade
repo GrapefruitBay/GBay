@@ -14,7 +14,7 @@
             .form-group
                label.col-md-2.control-label(for="isbn") ISBN*
                .col-md-4
-                  input.form-control(type="text",  placeholder="ISBN", ng-model="book.ISBN", required)
+                  input.form-control(type="number",  placeholder="ISBN", ng-model="book.ISBN", required)
                label.col-md-2.control-label(for="quantity") Quantity*
                .col-md-4
                   input.form-control(type="number", ng-model="book.quantity", required)
@@ -46,5 +46,5 @@
                   input.form-control(type="text", placeholder="Image", ng-model="book.imageUrl", required)
             .pull-right
                button.btn.btn-success(ng-click="editBook(book)", ng-disabled="editBookForm.$invalid") Edit
-               a.btn.btn-primary(href="#/") Delete
+               a.btn.btn-primary(ng-click="deleteBook(book._id)") Delete
                a.btn.btn-danger(href="#/") Cancel

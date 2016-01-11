@@ -14,7 +14,6 @@ app.factory('BookEdit', function($http, $q, BookResource) {
         },
         edit: function(book) {
             var deferred = $q.defer();
-            console.log(book)
 
             var updatedBook = new BookResource(book);
             updatedBook._id = book._id;
@@ -26,8 +25,23 @@ app.factory('BookEdit', function($http, $q, BookResource) {
 
             return deferred.promise;
         },
-        delete: function(book) {
-            return
+        deleteBook: function(bookId) {
+            if (confirm("Item will be permanently removed \nAre you sure?") == true) {
+                var deferred = $q.defer();
+
+                $http.delete('/api/books/' + bookId).success(function(response) {
+                    if (response.success) {
+                        deferred.resolve(true);
+                    }
+                    else {
+                        deferred.resolve(false);
+                    }
+                });
+
+                return deferred.promise;
+            } else {
+                return;
+            }
         }
     }
 })

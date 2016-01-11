@@ -12,12 +12,14 @@ app.controller('BookEditCtrl', function($scope, $location, $routeParams, BookEdi
         book.genres = book.genres.split(' ');
         book.tags = book.tags.split(' ');
         BookEdit.edit(book).then(function() {
+            cachedBooks = null;
             notifier.success('Book edited successfully!');
             $location.path('/books/' + book._id);
         })
     },
-    $scope.deleteBook = function(book) {
-        BookEdit.delete(book).then(function() {
+    $scope.deleteBook = function(bookId) {
+        BookEdit.deleteBook(bookId).then(function() {
+            cachedBooks = null;
             notifier.success('Book deleted successfully!');
             $location.path('/books');
         })
