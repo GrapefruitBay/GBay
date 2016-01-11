@@ -1,0 +1,10 @@
+.container
+    h2 {{ book.title }}
+    h3 {{ book.author }}
+    img(ng-src="{{book.imageUrl}}")
+    p Description: &nbsp  {{ book.description }}
+    ul
+        li(ng-repeat="tag in book.tags") {{ tag }}
+    p {{ book.published}}
+    .pull-right(ng-show="identity.currentUser.isAdmin()")
+        a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
