@@ -1,17 +1,18 @@
 .container
-    .row
-        .col-md-1 Search
-        .col-md-3
-            input.form-control(type="text", placeholder="Search", ng-model="search")
-        .col-md-1 Sort
-        .col-md-3
-            select.form-control(ng-model="sort")
-                option(value=" " ng-selected="'true'") Default
-                option(value="title") Title
-                option(value="published") Published
+    form.row(action="/books")
+        .col-md-1 Max price
         .col-md-2
-        .col-md-2(ng-show="identity.currentUser.isAdmin()")
-            a.btn.btn-danger(href="#/books/edit/") Add new book
+            input.form-control(type="text", placeholder="Max price", name="maxprice")
+        .col-md-1 Filter by
+        .col-md-2
+            select.form-control(ng-model="sort", name="filtertype")
+                option(value="title", ng-selected="'true'") Title
+                option(value="author") Author
+        .col-md-1 Filter text
+        .col-md-3
+            input.form-control(type="text", placeholder="Filter text", name="filtertext")
+        .col-md-1(ng-show="identity.currentUser.isAdmin()")
+            button.btn.btn-info(type="submit") Filter
     br
     .k-grid.k-widget(kendo-grid='', data-role='grid')
         .k-grid-header(style='padding-right: 17px;')
@@ -83,4 +84,8 @@
                 span.k-icon.k-i-seek-e Go to the last page
             span.k-pager-info.k-label(ng-if="books.length < 5") 1 - {{books.length}} of {{books.length}}
             span.k-pager-info.k-label(ng-if="books.length >= 5")  1 - 5 of {{books.length}}
+    br
+    .pull-right(ng-show="identity.currentUser.isAdmin()")
+        a.btn.btn-danger(href="#/books/edit/") Add new book
+    br
     br

@@ -2,14 +2,69 @@ var Book = require('mongoose').model('Book');
 
 module.exports = {
     getAllBooks: function (req, res, next) {
-        Book.find({}).exec(function (err, collection) {
-            if (err) {
-                console.log('Books could not be loaded: ' + err);
-            }
+        var filterType = '',
+            filterText = '',
+            maxPrice = 0;
 
-            //res.render('booksList', {books: books});
-            res.send(collection);
-        })
+        if (req.query.filtertext) {
+            filterType = req.query.filtertype;
+            var filterText = new RegExp(req.query.filtertext, 'i');
+
+            if (filterType === 'title') {
+                if (req.query.maxprice) {
+                    maxPrice = req.query.maxprice;
+
+                    Book.find({price:{$lt: maxPrice}}, {title: filterText}).exec(function (err, books) {
+                        if (err) {
+                            console.log('Books could not be loaded: ' + err);
+                        }
+
+                        //res.render('booksList', {books: books});
+                        res.send(books);
+                    })
+                } else {
+                    Book.find({title: filterText}).exec(function (err, books) {
+                        if (err) {
+                            console.log('Books could not be loaded: ' + err);
+                        }
+
+                        //res.render('booksList', {books: books});
+                        res.send(books);
+                    })
+                }
+            } else {
+                if (req.query.maxprice) {
+                    maxPrice = req.query.maxprice;
+
+                    Book.find({price:{$lt: maxPrice}}, {author: filterText}).exec(function (err, books) {
+                        if (err) {
+                            console.log('Books could not be loaded: ' + err);
+                        }
+
+                        //res.render('booksList', {books: books});
+                        res.send(books);
+                    })
+                } else {
+                    Book.find({author: filterText}).exec(function (err, books) {
+                        if (err) {
+                            console.log('Books could not be loaded: ' + err);
+                        }
+
+                        //res.render('booksList', {books: books});
+                        res.send(books);
+                    })
+                }
+            }
+        } else {
+            Book.find({}).exec(function (err, books) {
+                if (err) {
+                    console.log('Books could not be loaded: ' + err);
+                }
+
+                //res.render('booksList', {books: books});
+                res.send(books);
+            })
+        }
     },
     getBookById: function (req, res, next) {
         Book.findOne({_id: req.params.id}).exec(function (err, book) {
@@ -43,6 +98,11 @@ module.exports = {
         }
         else {
             res.send({reason: 'You do not have permissions!'})
+        }
+    },
+    deleteBook: function (req, res, next) {
+        if (req.user.roles.indexOf('admin') > -1) {
+            var updatedBookData = req.body;
         }
     }
 };
