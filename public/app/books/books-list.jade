@@ -1,14 +1,17 @@
 .container
     .row
-        .col-md-2 Search
-        .col-md-4
+        .col-md-1 Search
+        .col-md-3
             input.form-control(type="text", placeholder="Search", ng-model="search")
-        .col-md-2 Sort
-        .col-md-4
+        .col-md-1 Sort
+        .col-md-3
             select.form-control(ng-model="sort")
                 option(value=" " ng-selected="'true'") Default
                 option(value="title") Title
                 option(value="published") Published
+        .col-md-2
+        .col-md-2(ng-show="identity.currentUser.isAdmin()")
+            a.btn.btn-danger(href="#/books/edit/") Add new book
     br
     .k-grid.k-widget(kendo-grid='', data-role='grid')
         .k-grid-header(style='padding-right: 17px;')
@@ -58,7 +61,7 @@
                         td(role='gridcell')
                             span {{book.published}}
                         td(role='gridcell')
-                            span {{book.quantity}}"
+                            span {{book.quantity}}
                         td(role='gridcell')
                             a(href='{{book.imageUrl}}')
                                 img(src="{{book.imageUrl}}", width="60")
