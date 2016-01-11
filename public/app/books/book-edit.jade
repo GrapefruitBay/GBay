@@ -19,10 +19,13 @@
                .col-md-4
                   input.form-control(type="number", ng-model="book.quantity", required)
             // TODO: add yearPicker
-            //.form-group
-            //    label.col-md-2.control-label(for="password") Password
-            //    .col-md-10
-            //        input.form-control(type="password",  placeholder="Password", ng-model="user.password", required)
+            .form-group
+               label.col-md-2.control-label(for="year") Year published*
+               .col-md-4
+                  input.form-control(type="text",  placeholder="Year", ng-model="book.published", required)
+               label.col-md-2.control-label(for="price") Price*
+               .col-md-4
+                  input.form-control(type="number", ng-model="book.price", required)
             // TODO: repeat without commas but spaces
             .form-group
                label.col-md-2.control-label(for="genre") Genres*
