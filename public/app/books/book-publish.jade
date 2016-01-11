@@ -13,15 +13,18 @@
                 .form-group
                     label.col-md-2.control-label(for="isbn") ISBN*
                     .col-md-4
-                        input.form-control(type="text",  placeholder="ISBN", ng-model="book.ISBN", required)
+                        input.form-control(type="number",  placeholder="ISBN", ng-model="book.ISBN", required)
                     label.col-md-2.control-label(for="quantity") Quantity*
                     .col-md-4
                         input.form-control(type="number", ng-model="book.quantity", required)
                 // TODO: add yearPicker
-                //.form-group
-                //    label.col-md-2.control-label(for="password") Password
-                //    .col-md-10
-                //        input.form-control(type="password",  placeholder="Password", ng-model="user.password", required)
+                .form-group
+                    label.col-md-2.control-label(for="year") Year published*
+                    .col-md-4
+                        input.form-control(type="number",  placeholder="Year", ng-model="book.published", required)
+                    label.col-md-2.control-label(for="price") Price*
+                    .col-md-4
+                        input.form-control(type="number", ng-model="book.price", required)
                 .form-group
                     label.col-md-2.control-label(for="genre") Genres*
                     .col-md-4

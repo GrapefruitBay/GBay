@@ -9,8 +9,8 @@ module.exports = function(app) {
     app.get('/api/books', controllers.books.getAllBooks);
     app.post('/api/books', controllers.books.createBook);
     app.get('/api/books/:id', controllers.books.getBookById);
-    //app.put('/api/books/:id', controllers.books.updateBook);
-    //app.delete('/api/books/:id', controllers.books.deleteBook);
+    app.put('/api/books/', controllers.books.updateBook);
+    app.delete('/api/books/:id', controllers.books.removeBook);
 
     app.get('/api/games', controllers.games.getAllGames);
     app.get('/api/games/:id', controllers.games.getGameById);

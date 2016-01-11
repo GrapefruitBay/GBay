@@ -10,11 +10,70 @@
                 option(value="title") Title
                 option(value="published") Published
     br
-    table.table
-        tr
-            th Title
-            th Published
-        tr(ng-repeat="game in games | filter: search | orderBy: sort")
-            td
-                a(href="#/games/{{ game._id }}") {{ game.title }}
-            td {{ book.published }}
+    .k-grid.k-widget(kendo-grid='', data-role='grid')
+        .k-grid-header(style='padding-right: 17px;')
+            .k-grid-header-wrap.k-auto-scrollable
+                table(role='grid')
+                    colgroup
+                        col.k-hierarchy-col
+                        col(style='width:200px')
+                        col(style='width:200px')
+                        col(style='width:200px')
+                        col(style='width:200px')
+                        col(style='width:200px')
+                    thead(role='rowgroup')
+                        tr(role='row')
+                            th.k-hierarchy-cell.k-header.ng-scope  
+                            th.k-header.ng-scope(role='columnheader', data-field='Title', rowspan='1', data-title='Title', data-index='0', data-role='columnsorter',data-filterable="true", data-sortable="true")
+                                a.k-link Title
+                            th.k-header.ng-scope(role='columnheader', data-field='Manufacturer', rowspan='1', data-title='Manufacturer', data-index='1', data-role='columnsorter',data-filterable="true", data-sortable="true")
+                                a.k-link Manufacturer
+                            th.k-header.ng-scope(role='columnheader', data-field='Price', rowspan='1', data-index='2', data-role='columnsorter',data-filterable="true", data-sortable="true")
+                                a.k-link Price
+                            th.k-header.ng-scope(role='columnheader', data-field='Quantity', rowspan='1', data-index='3', data-role='columnsorter',data-filterable="true", data-sortable="true")
+                                a.k-link Quantity
+                            th.k-header.ng-scope(role='columnheader', data-field='Image', rowspan='1', data-index='4', data-role='columnsorter')
+                                span Cover
+        .k-grid-content.k-auto-scrollable
+            table.table-hover(role='treegrid')
+                colgroup
+                    col.k-hierarchy-col
+                    col(style='width:200px')
+                    col(style='width:200px')
+                    col(style='width:200px')
+                    col(style='width:200px')
+                    col(style='width:200px')
+                tbody(role='rowgroup')
+                    tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', ng-repeat="game in games" role='row')
+                        td.k-hierarchy-cell
+                            a.k-icon.k-plus(href='#/games/{{ game._id }}', tabindex='-1')
+                        td(role='gridcell')
+                            span {{game.title}}
+                        td(role='gridcell')
+                            span {{game.manufacturer}}
+                        td(role='gridcell')
+                            span {{game.price}} $
+                        td(role='gridcell')
+                            span {{game.quantity}}
+                        td(role='gridcell')
+                            a(href='{{game.imageUrl}}')
+                                img(src="{{game.imageUrl}}", width="120")
+        .k-pager-wrap.k-grid-pager.k-widget.k-floatwrap(data-role='pager')
+            a.k-link.k-pager-nav.k-pager-first.k-state-disabled(href='#', title='Go to the first page', data-page='1', tabindex='-1')
+                span.k-icon.k-i-seek-w Go to the first page
+            a.k-link.k-pager-nav.k-state-disabled(href='#', title='Go to the previous page', data-page='1', tabindex='-1')
+                span.k-icon.k-i-arrow-w Go to the previous page
+            ul.k-pager-numbers.k-reset
+                li.k-current-page
+                    span.k-link.k-pager-nav 1
+                li
+                    span.k-state-selected 1
+                //li
+                //    a.k-link(tabindex='-1', href='#', data-page='2') 2
+            a.k-link.k-pager-nav(href='#', title='Go to the next page', data-page='2', tabindex='-1')
+                span.k-icon.k-i-arrow-e Go to the next page
+            a.k-link.k-pager-nav.k-pager-last(href='#', title='Go to the last page', data-page='2', tabindex='-1')
+                span.k-icon.k-i-seek-e Go to the last page
+            span.k-pager-info.k-label(ng-if="games.length < 5") 1 - {{games.length}} of {{games.length}}
+            span.k-pager-info.k-label(ng-if="games.length >= 5")  1 - 5 of {{games.length}}
+    br
