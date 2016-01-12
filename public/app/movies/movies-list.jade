@@ -8,7 +8,7 @@
             select.form-control(ng-model="sort")
                 option(value=" " ng-selected="'true'") Default
                 option(value="title") Title
-                option(value="published") Published
+                option(value="released") Released
         .col-md-2
         .col-md-2(ng-show="identity.currentUser.isAdmin()")
             a.btn.btn-danger(href="#/movie/edit/") Add new movie
@@ -29,12 +29,12 @@
                             th.k-hierarchy-cell.k-header.ng-scope  
                             th.k-header.ng-scope(role='columnheader', data-field='Title', rowspan='1', data-role='columnsorter', data-filterable="true", data-sortable="true")
                                 a.k-link Title
-                            th.k-header.ng-scope(role='columnheader', data-field='Manufacturer', rowspan='1', data-title='Manufacturer', data-index='1', data-role='columnsorter',data-filterable="true", data-sortable="true")
-                                a.k-link Author
+                            th.k-header.ng-scope(role='columnheader', data-field='Director', rowspan='1', data-title='Director', data-index='1', data-role='columnsorter',data-filterable="true", data-sortable="true")
+                                a.k-link Director
                             th.k-header.ng-scope(role='columnheader', data-field='Price', rowspan='1', data-index='2', data-role='columnsorter',data-filterable="true", data-sortable="true")
                                 a.k-link Price
-                            th.k-header.ng-scope(role='columnheader', data-field='Quantity', rowspan='1', data-index='3', data-role='columnsorter',data-filterable="true", data-sortable="true")
-                                a.k-link Published
+                            th.k-header.ng-scope(role='columnheader', data-field='Released', rowspan='1', data-index='3', data-role='columnsorter',data-filterable="true", data-sortable="true")
+                                a.k-link Released
                             th.k-header.ng-scope(role='columnheader', data-field='Quantity', rowspan='1', data-index='3', data-role='columnsorter',data-filterable="true", data-sortable="true")
                                 a.k-link Quantity
                             th.k-header.ng-scope(role='columnheader', data-field='Image', rowspan='1', data-index='4', data-role='columnsorter')
@@ -49,22 +49,22 @@
                     col(style='width:180px')
                     col(style='width:180px')
                 tbody(role='rowgroup')
-                    tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', ng-repeat="book in books" role='row', style="height:10px")
+                    tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', ng-repeat="movie in movies" role='row', style="height:10px")
                         td.k-hierarchy-cell
-                            a.k-icon.k-plus(href='#/books/{{ book._id }}', tabindex='-1')
+                            a.k-icon.k-plus(href='#/movies/{{ movie._id }}', tabindex='-1')
                         td(role='gridcell')
-                            span {{book.title}}
+                            span {{movie.title}}
                         td(role='gridcell')
-                            span {{book.author}}
+                            span {{movie.director}}
                         td(role='gridcell')
-                            span {{book.price}} $
+                            span {{movie.price}} $
                         td(role='gridcell')
-                            span {{book.published}}
+                            span {{movie.published}}
                         td(role='gridcell')
-                            span {{book.quantity}}
+                            span {{movie.quantity}}
                         td(role='gridcell')
-                            a(href='{{book.imageUrl}}')
-                                img(src="{{book.imageUrl}}", width="60")
+                            a(href='{{movie.imageUrl}}')
+                                img(src="{{movie.imageUrl}}", width="60")
         .k-pager-wrap.k-grid-pager.k-widget.k-floatwrap(data-role='pager')
             a.k-link.k-pager-nav.k-pager-first.k-state-disabled(href='#', title='Go to the first page', data-page='1', tabindex='-1')
                 span.k-icon.k-i-seek-w Go to the first page
@@ -81,6 +81,6 @@
                 span.k-icon.k-i-arrow-e Go to the next page
             a.k-link.k-pager-nav.k-pager-last(href='#', title='Go to the last page', data-page='2', tabindex='-1')
                 span.k-icon.k-i-seek-e Go to the last page
-            span.k-pager-info.k-label(ng-if="books.length < 5") 1 - {{books.length}} of {{books.length}}
-            span.k-pager-info.k-label(ng-if="books.length >= 5")  1 - 5 of {{books.length}}
+            span.k-pager-info.k-label(ng-if="movies.length < 5") 1 - {{movies.length}} of {{movies.length}}
+            span.k-pager-info.k-label(ng-if="movies.length >= 5")  1 - 5 of {{movies.length}}
     br
