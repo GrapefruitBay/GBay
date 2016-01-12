@@ -19,6 +19,8 @@
                             span.sr-only (current)
                     li
                         a(href="#") Games
+                    li
+                        a(href="#") DVD & Blu-ray
                     li.dropdown
                         a.dropdown-toggle(data-toggle="dropdown", role="button", aria-expanded="false")
                             | Stationary
@@ -48,3 +50,13 @@
             .panel.panel-primary
                 .panel-heading.text-center Games
                 .panel-body(ng-include="'/partials/main/games'")
+
+    .row
+        .col-md-6
+            .panel.panel-primary
+                .panel-heading.text-center New DVD's & Blu-ray's
+                .panel-body(ng-include="'/partials/main/new-movies'")
+        .col-md-6
+            .panel.panel-primary
+                .panel-heading.text-center Stationaries
+                .panel-body(ng-include="'/partials/main/stationaries'")

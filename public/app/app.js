@@ -9,6 +9,11 @@ app.config(function($routeProvider, $locationProvider) {
                 return auth.isAuthorizedForRole('admin');
             }
         },
+        isBanned: {
+            authenticate: function(auth) {
+                return auth.isAuthorizedForRole('banned');
+            }
+        },
         authenticated: {
             authenticate: function(auth) {
                 return auth.isAuthenticated();
@@ -40,6 +45,26 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/books/:id/review', {
             templateUrl: '/partials/books/book-review',
             controller: 'BookReviewCtrl'
+        })
+        .when('/movies', {
+            templateUrl: '/partials/movies/movies-list',
+            controller: 'MoviesListCtrl'
+        })
+        .when('/movies/edit/', {
+            templateUrl: '/partials/movies/movie-publish',
+            controller: 'MoviePublishCtrl'
+        })
+        .when('/movies/edit/:id', {
+            templateUrl: '/partials/movies/movie-edit',
+            controller: 'MovieEditCtrl'
+        })
+        .when('/movies/:id', {
+            templateUrl: '/partials/movies/movie-details',
+            controller: 'MovieDetailsCtrl'
+        })
+        .when('/movies/:id/review', {
+            templateUrl: '/partials/movies/movie-review',
+            controller: 'MovieReviewCtrl'
         })
         .when('/games', {
             templateUrl: '/partials/games/games-list',

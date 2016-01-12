@@ -1,0 +1,6 @@
+div(ng-repeat="movie in movies | orderBy: '-published' | limitTo: 10")
+    .row
+        .col-md-3
+            | {{ movie.published }}
+        .col-md-9
+            a(href="#/movies/{{ movie._id }}") {{ movie.title }}
