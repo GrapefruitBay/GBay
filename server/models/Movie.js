@@ -44,7 +44,7 @@ module.exports.seedInitialMovies = function() {
                     content: 'Failva moshtno',
                     rating: 4
                 }],
-                imageUrl: 'http://a.dilcdn.com/bl/wp-content/uploads/sites/6/2015/10/star-wars-force-awakens-official-poster.jpg'});
+                imageUrl: 'http://a.dilcdn.com/bl/wp-content/uploads/sites/6/2015/10/star-wars-force-awakens-official-poster-691x1024.jpg'});
             console.log('movie added');
         }
     });
