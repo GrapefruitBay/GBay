@@ -1,6 +1,21 @@
-div(ng-repeat="book in books | orderBy: '-published' | limitTo: 10")
-    .row
-        .col-md-3
-            | {{ book.published }}
-        .col-md-9
-            a(href="#/books/{{ book._id }}") {{ book.title }}
+div.row.text-center
+
+    .col-md-2(ng-repeat="book in books | orderBy: '-published' | limitTo: 10")
+        .card.hoverable
+            .card-image
+                a(href="#/books/{{book._id}}")
+                    img(height="200", src='{{book.imageUrl}}')
+                    span.card-title {{book.title}}
+                .card-content
+                    p.truncate
+                        | {{book.description}}
+
+                .card-action.text-center
+                    a(href="#/books/{{book._id}}")
+                        button.btn.btn-default.waves-effect.waves-light(type='button') View
+                    a(href="#/cart")
+                        button.btn.btn-info.waves-effect.waves-light.btn-price(type='button')
+                            span.buy Buy Now!
+                            span.price {{book.price}}
+
+

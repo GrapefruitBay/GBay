@@ -5,6 +5,12 @@ app.factory('notifier', function(toastr) {
         },
         error: function(msg) {
             toastr.error(msg);
+        },
+        warning: function(msg){
+            toastr.warning(msg);
+        },
+        info: function(msg){
+            toastr.info(msg);
         }
     }
-})
+});

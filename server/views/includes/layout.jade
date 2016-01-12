@@ -1,14 +1,25 @@
-doctype
-html
-    head
-        title Grapefruit Bay
-        link(rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css")
-        link(rel="stylesheet" href="/lib/toastr/toastr.css")
-        link(rel="stylesheet" href="/css/site.css")
-        link(rel="stylesheet" href="/lib/kendo-ui/styles/kendo.common.min.css")
-        link(rel="stylesheet" href="/lib/kendo-ui/styles/kendo.default.min.css")
-    body(ng-app="app")
-        block main-content
+doctype html
+head
+    title Grapefruit Bay
 
-        include scripts
-        include currentUser
+    link(rel="stylesheet", href="/lib/toastr/toastr.css")
+    link(rel="stylesheet", href="/lib/kendo-ui/styles/kendo.common.min.css")
+    link(rel="stylesheet", href="/lib/kendo-ui/styles/kendo.default.min.css")
+    link(href="/lib/mdb-free/css/bootstrap.min.css", rel="stylesheet")
+    link(href="/lib/mdb-free/css/mdb.min.css", rel="stylesheet")
+    link(href="css/custom-styles.css", rel="stylesheet")
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
+
+    script(type="text/javascript", src="/lib/jquery/dist/jquery.js")
+    script(type="text/javascript", src="/lib/bootstrap/dist/js/bootstrap.js")
+    script(type="text/javascript", src="/lib/mdb-free/js/mdb.min.js")
+
+    link(rel='shortcut icon', href='favicon.ico')
+    link(rel='icon', href='favicon.ico')
+body(ng-app="app")
+
+    block main-content
+
+    include scripts
+    include currentUser
