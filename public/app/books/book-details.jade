@@ -1,5 +1,7 @@
 .container
     h2 {{ book.title }}
+    .pull-right(ng-show="identity.currentUser.isAdmin()")
+        a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
     h3 {{ book.author }}
     img(ng-src="{{book.imageUrl}}")
     p Description: &nbsp  {{ book.description }}
@@ -10,5 +12,3 @@
         li(ng-repeat="review in book.reviews") {{ review.content }}
         li(ng-show="identity.isAuthenticated()")
             a(href="#/books/{{book._id}}/review") Add review
-    .pull-right(ng-show="identity.currentUser.isAdmin()")
-        a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
