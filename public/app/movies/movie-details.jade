@@ -1,10 +1,10 @@
 .container
     h2 {{ movie.title }}
     h3 {{ movie.director }}
-    img(ng-src="{{book.imageUrl}}")
+    img(ng-src="{{movie.imageUrl}}")
     p Description: &nbsp  {{ movie.description }}
     ul
-        li(ng-repeat="tag in book.tags") {{ tag }}
+        li(ng-repeat="tag in movie.tags") {{ tag }}
     p {{ movie.released}}
     ul Reviews
         li(ng-repeat="review in movie.reviews") {{ review.content }}
