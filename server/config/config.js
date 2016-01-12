@@ -13,4 +13,4 @@ module.exports = {
         db: 'mongodb://team21:telerik@ds035985.mongolab.com:35985/grapefruit',
         port: process.env.PORT || 3030
     }
-}
+};
