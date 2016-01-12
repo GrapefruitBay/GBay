@@ -7,4 +7,4 @@ app.factory('notifier', function(toastr) {
             toastr.error(msg);
         }
     }
-})
+});

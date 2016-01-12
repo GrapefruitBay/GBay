@@ -10,10 +10,16 @@ module.exports = function(app) {
     app.post('/api/books', controllers.books.createBook);
     app.get('/api/books/:id', controllers.books.getBookById);
     app.put('/api/books/', controllers.books.updateBook);
-    app.delete('/api/books/:id', controllers.books.removeBook);
+    //app.delete('/api/books/:id', controllers.books.removeBook);
 
     app.get('/api/games', controllers.games.getAllGames);
     app.get('/api/games/:id', controllers.games.getGameById);
+
+    app.get('/api/movies', controllers.movies.getAllMovies);
+    app.post('/api/movies', controllers.movies.createMovie);
+    app.get('/api/movies/:id', controllers.movies.getMovieById);
+    app.put('/api/movies/', controllers.movies.updateMovie);
+    //app.delete('/api/movies/:id', controllers.movies.removeMovie);
 
     app.get('/partials/:partialArea/:partialName', function(req, res) {
         res.render('../../public/app/' + req.params.partialArea + '/' + req.params.partialName)
@@ -25,9 +31,9 @@ module.exports = function(app) {
     app.get('/api/*', function(req, res) {
         res.status(404);
         res.end();
-    })
+    });
 
     app.get('*', function(req, res) {
         res.render('index', {currentUser: req.user});
     });
-}
+};
