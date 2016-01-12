@@ -1,14 +1,14 @@
 .container
-    h2 {{ book.title }}
-    h3 {{ book.author }}
+    h2 {{ movie.title }}
+    h3 {{ movie.director }}
     img(ng-src="{{book.imageUrl}}")
-    p Description: &nbsp  {{ book.description }}
+    p Description: &nbsp  {{ movie.description }}
     ul
         li(ng-repeat="tag in book.tags") {{ tag }}
-    p {{ book.published}}
+    p {{ movie.released}}
     ul Reviews
-        li(ng-repeat="review in book.reviews") {{ review.content }}
+        li(ng-repeat="review in movie.reviews") {{ review.content }}
         li(ng-show="identity.isAuthenticated()")
-            a(href="#/books/{{book._id}}/review") Add review
+            a(href="#/movie/{{movie._id}}/review") Add review
     .pull-right(ng-show="identity.currentUser.isAdmin()")
-        a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
+        a.btn.btn-danger(href="#/movie/edit/{{ movie._id }}") Edit movie
