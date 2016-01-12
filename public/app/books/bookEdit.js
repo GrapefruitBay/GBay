@@ -25,6 +25,20 @@ app.factory('BookEdit', function($http, $q, BookResource) {
 
             return deferred.promise;
         },
+        addReview: function(book) {
+            var deferred = $q.defer();
+
+            $http.put('/api/books/' + book._id, book).success(function(response) {
+                if (response.success) {
+                    deferred.resolve(true);
+                }
+                else {
+                    deferred.resolve(false);
+                }
+            });
+
+            return deferred.promise;
+        },
         deleteBook: function(bookId) {
             if (confirm("Item will be permanently removed \nAre you sure?") == true) {
                 var deferred = $q.defer();

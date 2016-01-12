@@ -7,6 +7,7 @@
         a.btn.btn-primary(href="#/signup") Sign Up
 
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+
         li.dropdown
             a.dropdown-toggle.waves-effect.waves-light(href="", data-toggle="dropdown")
                 | {{ identity.currentUser.firstName + ' ' + identity.currentUser.lastName }}
@@ -20,9 +21,10 @@
                     a(href="#/profile") Profile
                 li
                     a(href="#" ng-click="logout()") Sign Out
-        li.dropdown
+
+        li.dropdown(ng-show="identity.isAuthenticated()")
             a.dropdown-toggle.waves-effect.waves-light(data-toggle="dropdown", role="button", aria-expanded="false")
-                i.material-icons shopping_cart
+                i.material-icons shopping_cart {{identity.currentUser.cart.length}}
             ul.dropdown-menu(role="menu")
                 li
                     a(href="#") View Shopping Cart
@@ -31,6 +33,3 @@
                 li.divider
                 li
                     p.text-center Total: {{}}
-
-
-script(type="text/javascript") $(document).ready(function () {$('.dropdown-toggle').dropdown();});
