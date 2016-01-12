@@ -1,20 +1,78 @@
-body {
-  padding-top: 80px;
-}
-.navbar-right .navbar-form input {
-  margin-right: 10px;
-}
-.navbar-right .navbar-form a.btn {
-  margin-left: 10px;
-}
 .toast-top-right {
-  top: 70px;
+    top: 70px;
 }
-footer {
-  padding-left: 120px;
-  padding-right: 120px;
+
+.btn-price {
+    width: 100%;
+    padding-left:0;
+    padding-right:0;
+    margin:0;
 }
-footer p {
-  border-top: 1px solid #808080;
-  padding-top: 10px;
+
+.btn-price .price {
+    display: none;
+}
+
+.btn-price:hover .buy {
+    display: none;
+}
+
+.btn-price:hover .price {
+    display: inline;
+}
+
+.price::before {
+    content: '$';
+}
+
+img.perfect-fit {
+    width: 100%;
+}
+
+.img-container {
+    width: 1200px;
+    height: 600px;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 20px;
+    background-color: #ccc;
+}
+
+.navbar-center {
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-center > li{
+    float: none;
+    display: inline-block;
+    width: 25%;
+}
+
+.truncate {
+    display: block;
+    /* Fallback for non-webkit */
+    display: -webkit-box;
+    max-width: 400px;
+    height: 125px;
+    /* Fallback for non-webkit */
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.4;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dropdown-menu{
+    min-width: 100%;
+}
+.dropdown-menu > li > a{
+    text-align: center;
+}
+
+.card{
+    margin:0;
+    padding:0;
+    max-width: 200px;
 }

@@ -9,7 +9,7 @@
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
 
         li.dropdown
-            a.dropdown-toggle(href="", data-toggle="dropdown")
+            a.dropdown-toggle.waves-effect.waves-light(href="", data-toggle="dropdown")
                 | {{ identity.currentUser.firstName + ' ' + identity.currentUser.lastName }}
                 span.caret
             ul.dropdown-menu
@@ -21,5 +21,15 @@
                     a(href="#/profile") Profile
                 li
                     a(href="#" ng-click="logout()") Sign Out
-         li(ng-show="identity.isAuthenticated()", style="color:#ffffff") shopping cart
-            i.fa.fa-shopping-cart &nbsp {{identity.currentUser.cart.length}}
+
+        li.dropdown(ng-show="identity.isAuthenticated()")
+            a.dropdown-toggle.waves-effect.waves-light(data-toggle="dropdown", role="button", aria-expanded="false")
+                i.material-icons shopping_cart {{identity.currentUser.cart.length}}
+            ul.dropdown-menu(role="menu")
+                li
+                    a(href="#") View Shopping Cart
+                li
+                    a(href="#") Empty Shopping Cart
+                li.divider
+                li
+                    p.text-center Total: {{}}

@@ -1,24 +1,25 @@
 extends includes/layout
 block main-content
-    header.nav.navbar-inverse.navbar-fixed-top
+    nav.navbar.z-depth-2.deep-orange
         .container
-            .navbar-header
-                a.navbar-brand(href="#/") GBay
-            .navbar-collapse.collapse
+            .navbar-header.dropdown-hover
+                button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a(href="#/").navbar-brand.waves-effect.waves-light GBay
+
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
                 ul.nav.navbar-nav
-                    li
-                        a(href="#/") Home
-                    li
-                        a(href="#/books") Books
-                    li
-                        a(href="#/games") Games
-                    li
-                        a(href="#/movies") DVD's & Blu-ray
                 div(ng-include="'partials/account/login'")
 
     section
         div(ng-view)
 
-    footer.navbar-fixed-bottom
-        p.text-center
-            | &copy; Team-21 2016
+    footer.page-footer.z-depth-2.deep-orange.darken-1(if='footer')
+        .footer-copyright
+            .container.text-center
+                .col-md-10.col-md-offset-1
+                    | © 2016 Telerik Academy
+                    a(href='http://telerikacademy.com') TelericAcademy.com

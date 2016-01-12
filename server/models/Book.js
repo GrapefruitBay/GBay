@@ -35,7 +35,7 @@ module.exports.seedInitialBooks = function () {
         if (collection.length === 0) {
             Book.create({
                 type: 'book',
-                title: 'LOTR',
+                title: 'Lord Of The Rings',
                 author: 'AZ',
                 ISBN: 9780261103566,
                 published: 2000,
