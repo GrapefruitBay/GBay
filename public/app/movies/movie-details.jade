@@ -9,6 +9,6 @@
     ul Reviews
         li(ng-repeat="review in movie.reviews") {{ review.content }}
         li(ng-show="identity.isAuthenticated()")
-            a(href="#/movie/{{movie._id}}/review") Add review
+            a(href="#/movies/{{movie._id}}/review") Add review
     .pull-right(ng-show="identity.currentUser.isAdmin()")
-        a.btn.btn-danger(href="#/movie/edit/{{ movie._id }}") Edit movie
+        a.btn.btn-danger(href="#/movies/edit/{{ movie._id }}") Edit movie

@@ -13,9 +13,14 @@
                   .col-md-10
                      textarea.form-control(rows="2", placeholder="Enter your comments", ng-model="movie.comment", required)
                .form-group
-                  label.col-md-2.control-label(for="rating") Rate
-                  .col-md-4
-                     input.form-control(type="number",  value=1, min="1" max="5" ng-model="movie.rating")
+                  .col-md-5.control-label Rating
+                  .pull-left
+                     .rating
+                        span.star -
+                        span.star -
+                        span.star -
+                        span.star -
+                        span.star -
             .pull-right(ng-show="identity.isAuthenticated()")
                button.btn.btn-success(ng-click="addReview(movie)", ng-disabled="addCommentForm.$invalid") Add
                a.btn.btn-danger(href="#/movies/{{movie._id}}") Cancel

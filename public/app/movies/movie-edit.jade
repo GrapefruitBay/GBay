@@ -12,9 +12,9 @@
                .col-md-10
                   input.form-control(type="text",  placeholder="Director", ng-model="movie.director", required)
             .form-group
-               label.col-md-2.control-label(for="stars") Stars*
-                  .col-md-10
-                     input.form-control(type="text", placeholder="enter stars separated by space", ng-model="movie.stars", required)
+               label.col-md-2.control-label(for="lineUp") LineUp
+               .col-md-4
+                  input.form-control(type="text", placeholder="enter actors separated by ,", ng-model="movie.stars")
                label.col-md-2.control-label(for="quantity") Quantity*
                .col-md-4
                   input.form-control(type="number", ng-model="movie.quantity", required)

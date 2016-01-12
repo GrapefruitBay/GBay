@@ -3,6 +3,7 @@ app.controller('MovieEditCtrl', function($scope, $location, $routeParams, MovieE
         collection.forEach(function(movie) {
             if (movie._id === $routeParams.id) {
                 $scope.movie = movie;
+                $scope.movie.stars = movie.actors.join(',');
                 $scope.movie.genres = movie.genres.join(' ');
                 $scope.movie.tags = movie.tags.join(' ');
             }
@@ -10,7 +11,7 @@ app.controller('MovieEditCtrl', function($scope, $location, $routeParams, MovieE
     })
 
     $scope.editMovie = function(movie) {
-
+        $scope.movie.stars = movie.actors.join(',');
         movie.genres = movie.genres.split(' ');
         movie.tags = movie.tags.split(' ');
         MovieEdit.edit(movie).then(function() {
