@@ -44,5 +44,16 @@ module.exports = {
         else {
             res.send({reason: 'You do not have permissions!'})
         }
+    },
+    removeBook: function(req, res, next) {
+        if (req.user.roles.indexOf('admin') > -1) {
+
+            Book.remove(({_id: req.params.id}), function() {
+                res.end();
+            })
+        }
+        else {
+            res.send({reason: 'You do not have permissions!'})
+        }
     }
 };

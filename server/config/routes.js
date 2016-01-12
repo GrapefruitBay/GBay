@@ -15,6 +15,12 @@ module.exports = function(app) {
     app.get('/api/games', controllers.games.getAllGames);
     app.get('/api/games/:id', controllers.games.getGameById);
 
+    app.get('/api/movies', controllers.movies.getAllMovies);
+    app.post('/api/movies', controllers.movies.createMovie);
+    app.get('/api/movies/:id', controllers.movies.getMovieById);
+    app.put('/api/movies/', controllers.movies.updateMovie);
+    //app.delete('/api/movies/:id', controllers.movies.removeMovie);
+
     app.get('/partials/:partialArea/:partialName', function(req, res) {
         res.render('../../public/app/' + req.params.partialArea + '/' + req.params.partialName)
     });

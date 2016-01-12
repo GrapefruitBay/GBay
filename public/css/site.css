@@ -1,0 +1,43 @@
+body {
+  padding-top: 80px;
+}
+.navbar-right .navbar-form input {
+  margin-right: 10px;
+}
+.navbar-right .navbar-form a.btn {
+  margin-left: 10px;
+}
+.toast-top-right {
+  top: 70px;
+}
+footer {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+footer p {
+  border-top: 1px solid #808080;
+  padding-top: 10px;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  color: red;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  font-size: x-large;
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
+}

@@ -46,7 +46,7 @@ img.perfect-fit {
 .navbar-center > li{
     float: none;
     display: inline-block;
-    width: 33%;
+    width: 25%;
 }
 
 .truncate {

@@ -1,3 +1,7 @@
+
+
+
+
 .container
     .row
         .col-md-3
@@ -11,16 +15,16 @@
                     a.collection-item(href='#/stationary') Stationary
         .col-md-9
             .thumbnail
-                img.img-responsive.z-depth-2(width="400", src='{{book.imageUrl}}', alt='')
+                img.img-responsive.z-depth-2(width="400", src='{{movie.imageUrl}}', alt='')
                 .caption-full
-                    h4.pull-right.price {{book.price}}
+                    h4.pull-right.price {{movie.price}}
                     h4
-                        a(href='') {{book.title}}
-                    h6 {{book.author}}
+                        a(href='') {{movie.title}} ({{ movie.released}})
+                    h6 {{movie.director}}
                     p
-                        | {{book.description}}
+                        | {{movie.description}}
                 .ratings
-                    p.pull-right {{book.reviews.length}} reviews
+                    p.pull-right {{movie.reviews.length}} reviews
                     p
                     ul.list-inline
                         i.fa.fa-star
@@ -32,8 +36,8 @@
                     p
             .well
                 .text-right(ng-show="identity.isAuthenticated()")
-                    a.btn.btn-success.waves-effect.waves-light(href="#/books/{{book._id}}/review") Leave a Review
-                .wrapper(ng-repeat="review in book.reviews")
+                    a.btn.btn-success.waves-effect.waves-light(href="#/movies/{{movie._id}}/review") Leave a Review
+                .wrapper(ng-repeat="review in movie.reviews")
                     hr
                     .row
                         .col-md-12
@@ -44,10 +48,5 @@
                             p {{ review.content }}
 
 
-
-
         .pull-right(ng-show="identity.currentUser.isAdmin()")
-            a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
-
-
-
+            a.btn.btn-danger(href="#/books/edit/{{ movie._id }}") Edit book

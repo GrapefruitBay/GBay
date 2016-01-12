@@ -1,9 +1,9 @@
 .container
 
-   h3 {{ book.title }} reviews
-   img(ng-src="{{book.imageUrl}}")
+   h3 {{ movie.title }} reviews
+   img(ng-src="{{movie.imageUrl}}")
    ul
-      li(ng-repeat="review in book.reviews") {{ review.content }}
+      li(ng-repeat="review in movie.reviews") {{ review.content }}
    .well
       form.form-horizontal(name="addCommentForm")
          fieldset
@@ -11,7 +11,7 @@
                .form-group
                   label.col-md-2.control-label(for="review") Review*
                   .col-md-10
-                     textarea.form-control(rows="2", placeholder="Enter your comments", ng-model="book.comment", required)
+                     textarea.form-control(rows="2", placeholder="Enter your comments", ng-model="movie.comment", required)
                .form-group
                   .col-md-5.control-label Rating
                   .pull-left
@@ -21,7 +21,6 @@
                         span.star -
                         span.star -
                         span.star -
-                     //input.form-control(type="number",  value=1, min="1" max="5" ng-model="book.rating")
             .pull-right(ng-show="identity.isAuthenticated()")
-               button.btn.btn-success(ng-click="addReview(book)", ng-disabled="addCommentForm.$invalid") Add
-               a.btn.btn-danger(href="#/books/{{book._id}}") Cancel
+               button.btn.btn-success(ng-click="addReview(movie)", ng-disabled="addCommentForm.$invalid") Add
+               a.btn.btn-danger(href="#/movies/{{movie._id}}") Cancel

@@ -1,21 +1,19 @@
 div.row.text-center
 
-    .col-md-2(ng-repeat="book in books | orderBy: '-published' | limitTo: 10")
+    .col-md-2(ng-repeat="movie in movies | orderBy: '-published' | limitTo: 10")
         .card.hoverable
             .card-image
-                a(href="#/books/{{book._id}}")
-                    img(height="200", src='{{book.imageUrl}}')
-                    span.card-title {{book.title}}
+                a(href="#/books/{{movie._id}}")
+                    img(height="200", src='{{movie.imageUrl}}')
+                    span.card-title {{movie.title}}
                 .card-content
                     p.truncate
-                        | {{book.description}}
+                        | {{movie.description}}
 
                 .card-action.text-center
-                    a(href="#/books/{{book._id}}")
+                    a(href="#/books/{{movie._id}}")
                         button.btn.btn-default.waves-effect.waves-light(type='button') View
                     a(href="#/cart")
                         button.btn.btn-info.waves-effect.waves-light.btn-price(type='button')
                             span.buy Buy Now
-                            span.price {{book.price}}
-
-
+                            span.price {{movie.price}}

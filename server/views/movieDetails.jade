@@ -1,0 +1,10 @@
+.container
+    h2 {{ movie.title }}
+    h3 {{ movie.director }}
+    img(ng-src="{{movie.imageUrl}}")
+    p Description: &nbsp  {{ movie.description }}
+    ul
+        li(ng-repeat="tag in movie.tags") {{ tag }}
+    p {{ movie.published}}
+    .pull-right(ng-show="identity.currentUser.isAdmin()")
+        a.btn.btn-danger(href="#/movies/edit/{{ movie._id }}") Edit movie
