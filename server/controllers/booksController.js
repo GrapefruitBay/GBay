@@ -45,6 +45,17 @@ module.exports = {
             res.send({reason: 'You do not have permissions!'})
         }
     },
+    addComment: function (req, res, next) {
+        if (req.user) {
+            var review = req.body.review;
+            Book.findOneAndUpdate({_id: req.body._id}, {$push: {reviews: review}}, {safe: true, upsert: true}, function () {
+                res.end();
+            })
+        }
+        else {
+            res.send({reason: 'You do not have permissions!'})
+        }
+    },
     removeBook: function(req, res, next) {
         if (req.user.roles.indexOf('admin') > -1) {
 
