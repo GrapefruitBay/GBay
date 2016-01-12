@@ -25,7 +25,7 @@ app.factory('MovieEdit', function($http, $q, MovieResource) {
 
             return deferred.promise;
         },
-        deleteBook: function(movieId) {
+        deleteMovie: function(movieId) {
             if (confirm("Item will be permanently removed \nAre you sure?") == true) {
                 var deferred = $q.defer();
 
