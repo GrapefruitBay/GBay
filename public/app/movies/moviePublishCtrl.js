@@ -5,7 +5,7 @@ app.controller('MoviePublishCtrl', function($scope, $location, MovieEdit, notifi
         movie.genres = movie.genres.split(' ');
         movie.tags = movie.tags.split(' ');
         MovieEdit.publish(movie).then(function() {
-            notifier.success('Movie added successfully!');
+            notifier.info('Movie added successfully!');
             $location.path('/movies');
         })
     }
