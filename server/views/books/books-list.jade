@@ -1,7 +1,7 @@
 extends ../index
 
 block main-content
-    .container
+    .container(ng-controller="BooksListCtrl")
         .row
             .col-md-1 Search
             .col-md-3
@@ -14,7 +14,7 @@ block main-content
                     option(value="published") Published
             .col-md-2
             .col-md-2(ng-show="identity.currentUser.isAdmin()")
-                a.btn.btn-danger(href="#/books/edit/") Add new book
+                a.btn.btn-danger(href="/books/edit/") Add new book
         br
         .k-grid.k-widget(kendo-grid='', data-role='grid')
             .k-grid-header(style='padding-right: 17px;')
@@ -55,7 +55,7 @@ block main-content
                         each book in books
                             tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', role='row', style="height:10px")
                                 td.k-hierarchy-cell
-                                    a.k-icon.k-plus(href='/books/{{ book._id }}', tabindex='-1')
+                                    a.k-icon.k-plus(href='/books/#{book._id}', tabindex='-1')
                                 td(role='gridcell')=book.title
                                 td(role='gridcell')=book.author
                                 td(role='gridcell')=book.price

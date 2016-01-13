@@ -15,7 +15,7 @@ module.exports = {
             if (err) {
                 console.log('Game could not be loaded: ' + err);
             }
-
+            
             res.render('games/game-details', {game: game});
         })
     },

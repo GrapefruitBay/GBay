@@ -1,7 +1,7 @@
 extends ../index
 
 block main-content
-   .container
+   .container(ng-controller="BookReviewCtrl")
       img(ng-src="#{book.imageUrl}")
       h3 {{ book.title }} reviews
       each review in book.reviews

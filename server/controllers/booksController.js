@@ -2,18 +2,18 @@ var Book = require('mongoose').model('Book');
 
 module.exports = {
     getAllBooks: function (req, res, next) {
-            Book.find({}).exec(function (err, books) {
+        Book.find({}).exec(function (err, books) {
             if (err) {
                 console.log('Books could not be loaded: ' + err);
             }
 
-                console.log(books);
-                
+            console.log(books);
+
             //console.log(books);
             res.render('books/books-list', {books: books});
         })
     },
-        getBookById: function (req, res, next) {
+    getBookById: function (req, res, next) {
         Book.findOne({_id: req.params.id}).exec(function (err, book) {
             if (err) {
                 console.log('Book could not be loaded: ' + err);
@@ -48,7 +48,10 @@ module.exports = {
     addComment: function (req, res, next) {
         if (req.user) {
             var review = req.body.review;
-            Book.findOneAndUpdate({_id: req.body._id}, {$push: {reviews: review}}, {safe: true, upsert: true}, function () {
+            Book.findOneAndUpdate({_id: req.body._id}, {$push: {reviews: review}}, {
+                safe: true,
+                upsert: true
+            }, function () {
                 res.render('books/book-review');
             })
         }
@@ -56,10 +59,10 @@ module.exports = {
             res.send({reason: 'You do not have permissions!'})
         }
     },
-    removeBook: function(req, res, next) {
+    removeBook: function (req, res, next) {
         if (req.user.roles.indexOf('admin') > -1) {
 
-            Book.remove(({_id: req.params.id}), function() {
+            Book.remove(({_id: req.params.id}), function () {
                 res.end();
             })
         }

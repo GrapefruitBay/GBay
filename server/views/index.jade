@@ -4,7 +4,13 @@ html
         title Grapefruit Bay
         link(rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet" href="/lib/toastr/toastr.css")
+        link(rel="stylesheet", href="/lib/kendo-ui/styles/kendo.common.min.css")
+        link(rel="stylesheet", href="/lib/kendo-ui/styles/kendo.default.min.css")
         link(rel="stylesheet" href="/css/site.css")
+        link(href="css/custom-styles.css", rel="stylesheet")
+        link(rel="stylesheet" href="/lib/mdb-free/css/mdb.min.css")
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+        link(rel='stylesheet', href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
         script(type="text/javascript" src="/lib/angular/angular.js")
     body(ng-app="app" ng-cloak)
 
@@ -16,11 +22,10 @@ html
                     span.icon-bar
                     span.icon-bar
                     span.icon-bar
-                a(href="#/").navbar-brand.waves-effect.waves-light GBay
+                a(href="/").navbar-brand.waves-effect.waves-light GBay
 
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
                 ul.nav.navbar-nav
-                div(ng-include="'partials/account/login'")
                 include account/login
 
     section.animsition
@@ -30,8 +35,9 @@ html
         .footer-copyright
             .container.text-center
                 .col-md-10.col-md-offset-1
-                    | © 2016 Telerik Academy
-                    a(href='http://telerikacademy.com') TelericAcademy.com
+                    | © 2016
+                    a(href='http://telerikacademy.com')  TelericAcademy.com
+
         include includes/scripts
         include includes/currentUser
 

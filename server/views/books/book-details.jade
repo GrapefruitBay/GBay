@@ -1,19 +1,56 @@
 extends ../index
 
 block main-content
-    .container
-        h2 #{book.title}
-        .pull-right(ng-show="identity.currentUser.isAdmin()")
-            a.btn.btn-danger(href="#/books/edit/{{ book._id }}") Edit book
-        h3 #{book.author}
-        img(ng-src="#{book.imageUrl}")
-        p Description: &nbsp  #{book.description}
-        each tag in book.tags
-            ul
-                li=tag
-        p #{book.published}
-        each review in book.reviews
-            ul Reviews
-                li #{review.content}
-                li(ng-show="identity.isAuthenticated()")
-                    a(href="#/books/#{book._id}/review") Add review
+    .container(ng-controller="BookDetailsCtrl")
+        .row
+            .col-md-3
+                .sidebar
+                    .collection
+                        a.collection-item(href='/')
+                            h6 Home
+                        a.collection-item(href='/books') Books
+                        a.collection-item(href='/games') Games
+                        a.collection-item(href='/movies') Movies
+                        a.collection-item(href='/stationary') Stationary
+            .col-md-9
+                .thumbnail
+                    img.img-responsive.z-depth-2(width="400", src='#{book.imageUrl}', alt='')
+                    .caption-full
+                        h4.pull-right.price #{book.price}
+                        h4
+                            a(href='') #{book.title}
+                        h6 #{book.author}
+                        p
+                            | #{book.description}
+                    .ratings
+                        p.pull-right #{book.reviews.length} reviews
+                        p
+                        ul.list-inline
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                        |  4.0 stars
+                        p
+                .well
+                    .text-right(ng-show="identity.isAuthenticated()")
+                        a.btn.btn-success.waves-effect.waves-light(href="/books/{{book._id}}/review") Leave a Review
+                    each review in book.reviews
+                        .wrapper
+                            hr
+                            .row
+                                .col-md-12
+                                    ul.list-inline
+                                        each idx in [1, 2, 3, 4, 5]
+                                            i.fa.fa-star
+                                    |  #{review.author}
+                                    span.pull-right 10 days ago
+                                    p #{review.content}
+
+
+
+
+            .pull-right(ng-show="identity.currentUser.isAdmin()")
+                a.btn.btn-danger(href="/books/edit/#{book._id}") Edit book
+
