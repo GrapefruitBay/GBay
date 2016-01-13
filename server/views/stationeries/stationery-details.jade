@@ -1,7 +1,7 @@
 extends ../index
 
 block main-content
-    .container
+    .container(ng-controller="StationeryDetailsCtrl")
         .row
             .col-md-3
                 .sidebar
@@ -14,15 +14,16 @@ block main-content
                         a.collection-item(href='/stationary') Stationary
             .col-md-9
                 .thumbnail
-                    img.img-responsive.z-depth-2(width="400", src='#{game.imageUrl}', alt='')
+                    img.img-responsive.z-depth-2(width="400", src='#{stationery.imageUrl}', alt='')
                     .caption-full
-                        h4.pull-right.price #{game.price}
+                        h4.pull-right.price #{stationery.price}
                         h4
-                            a(href='') #{game.title}
+                            a(href='') #{stationery.title}
+                        h6 #{stationery.manufacturer}
                         p
-                            | #{game.description}
+                            | #{stationery.description}
                     .ratings
-                        p.pull-right #{game.reviews.length} reviews
+                        p.pull-right #{stationery.reviews.length} reviews
                         p
                         ul.list-inline
                             i.fa.fa-star
@@ -34,8 +35,8 @@ block main-content
                         p
                 .well
                     .text-right(ng-show="identity.isAuthenticated()")
-                        a.btn.btn-success.waves-effect.waves-light(href="/games/{{game._id}}/review") Leave a Review
-                    each review in game.reviews
+                        a.btn.btn-success.waves-effect.waves-light(href="/stationeries/{{stationery._id}}/review") Leave a Review
+                    each review in stationery.reviews
                         .wrapper
                             hr
                             .row
@@ -51,4 +52,5 @@ block main-content
 
 
             .pull-right(ng-show="identity.currentUser.isAdmin()")
-                a.btn.btn-danger(href="/game/edit/#{game._id}") Edit game
+                a.btn.btn-danger(href="/stationeries/edit/#{stationery._id}") Edit stationery
+

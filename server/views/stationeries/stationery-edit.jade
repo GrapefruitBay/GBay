@@ -1,0 +1,44 @@
+extends ../index
+
+block main-content
+    .container(ng-controller="StationeryEditCtrl")
+        .well
+            form.form-horizontal(name="editStationeryForm")
+                fieldset
+                    legend Edit stationery
+                    .form-group
+                        label.col-md-2.control-label(for="title") Title*
+                        .col-md-10
+                            input.form-control(type="text",  placeholder="Title", ng-model="stationery.title", required)
+                    .form-group
+                        label.col-md-2.control-label(for="manufacturer") Manufacturer*
+                        .col-md-10
+                            input.form-control(type="text",  placeholder="Manufacturer", ng-model="stationery.manufacturer", required)
+                    .form-group
+                        label.col-md-2.control-label(for="productCode") Product Code*
+                        .col-md-4
+                            input.form-control(type="text",  placeholder="Product Code", ng-model="stationery.productCode", required)
+                        label.col-md-2.control-label(for="quantity") Quantity*
+                        .col-md-4
+                            input.form-control(type="number", ng-model="stationery.quantity", required)
+                    // TODO: add yearPicker
+                    .form-group
+                        label.col-md-2.control-label(for="year") Year published*
+                        .col-md-4
+                            input.form-control(type="number",  placeholder="Year", ng-model="stationery.published", required)
+                        label.col-md-2.control-label(for="price") Price*
+                        .col-md-4
+                            input.form-control(type="number", ng-model="stationery.price", required)
+                    // TODO: repeat without commas but spaces
+                    .form-group
+                        label.col-md-2.control-label(for="description") Description
+                        .col-md-10
+                            textarea.form-control(rows="2", placeholder="Enter description", ng-model="stationery.description")
+                    .form-group
+                        label.col-md-2.control-label(for="image") Image URL*
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Image", ng-model="stationery.imageUrl", required)
+                    .pull-right
+                        button.btn.btn-success(ng-click="editStationery(stationery)", ng-disabled="editStationeryForm.$invalid") Edit
+                        a.btn.btn-primary(ng-click="deleteStationery(stationery._id)") Delete
+                        a.btn.btn-danger(href="#/") Cancel
