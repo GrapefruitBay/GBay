@@ -14,13 +14,12 @@ module.exports = {
                 if (req.query.maxprice) {
                     maxPrice = req.query.maxprice;
 
-                    Book.find({price:{$lt: maxPrice}}, {title: filterText}).exec(function (err, books) {
+                    Book.find({price: {$lt: maxPrice}}, {title: filterText}).exec(function (err, books) {
                         if (err) {
                             console.log('Books could not be loaded: ' + err);
                         }
 
-                        //res.render('booksList', {books: books});
-                        res.send(books);
+                        res.render('booksList', {books: books});
                     })
                 } else {
                     Book.find({title: filterText}).exec(function (err, books) {
@@ -28,21 +27,19 @@ module.exports = {
                             console.log('Books could not be loaded: ' + err);
                         }
 
-                        //res.render('booksList', {books: books});
-                        res.send(books);
+                        res.render('booksList', {books: books});
                     })
                 }
             } else {
                 if (req.query.maxprice) {
                     maxPrice = req.query.maxprice;
 
-                    Book.find({price:{$lt: maxPrice}}, {author: filterText}).exec(function (err, books) {
+                    Book.find({price: {$lt: maxPrice}}, {author: filterText}).exec(function (err, books) {
                         if (err) {
                             console.log('Books could not be loaded: ' + err);
                         }
 
-                        //res.render('booksList', {books: books});
-                        res.send(books);
+                        res.render('booksList', {books: books});
                     })
                 } else {
                     Book.find({author: filterText}).exec(function (err, books) {
@@ -50,8 +47,7 @@ module.exports = {
                             console.log('Books could not be loaded: ' + err);
                         }
 
-                        //res.render('booksList', {books: books});
-                        res.send(books);
+                        res.render('booksList', {books: books});
                     })
                 }
             }
@@ -61,8 +57,7 @@ module.exports = {
                     console.log('Books could not be loaded: ' + err);
                 }
 
-                //res.render('booksList', {books: books});
-                res.send(books);
+                res.render('booksList', {books: books});
             })
         }
     },
@@ -72,8 +67,7 @@ module.exports = {
                 console.log('Books could not be loaded: ' + err);
             }
 
-            //res.render('bookDetails', {book: book});
-            res.send(book);
+            res.render('bookDetails', {book: book});
         })
     },
     createBook: function (req, res, next) {
@@ -84,8 +78,7 @@ module.exports = {
                 return;
             }
 
-            //res.render('addBooks', {book: books});
-            res.send(book);
+            res.render('addBooks', {book: books});
         })
     },
     updateBook: function (req, res, next) {
