@@ -1,4 +1,4 @@
-app.controller('MovieEditCtrl', function($scope, $location, $routeParams, MovieEdit, cachedMovies, notifier) {
+angular.module('app.controllers').controller('MovieEditCtrl', function($scope, $location, $routeParams, MovieEdit, cachedMovies, notifier) {
     $scope.movie = cachedMovies.query().$promise.then(function(collection) {
         collection.forEach(function(movie) {
             if (movie._id === $routeParams.id) {

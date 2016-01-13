@@ -1,4 +1,4 @@
-app.controller('BookReviewCtrl', function($scope, $location, $routeParams, BookEdit, cachedBooks, identity, notifier) {
+angular.module('app.controllers').controller('BookReviewCtrl', function($scope, $location, $routeParams, BookEdit, cachedBooks, identity, notifier) {
     $scope.identity = identity;
     $scope.book = cachedBooks.query().$promise.then(function(collection) {
         collection.forEach(function(book) {

@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($scope, $location, notifier, identity, auth) {
+angular.module('app.controllers').controller('LoginCtrl', function($scope, $location, notifier, identity, auth) {
     $scope.identity = identity;
 
     $scope.login = function(user) {

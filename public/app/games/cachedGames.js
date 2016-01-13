@@ -1,4 +1,4 @@
-app.factory('cachedGames', function(GameResource) {
+angular.module('app.services').factory('cachedGames', function(GameResource) {
     var cachedGames;
 
     return {

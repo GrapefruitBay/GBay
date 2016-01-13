@@ -1,4 +1,4 @@
-app.factory('notifier', function(toastr) {
+angular.module('app.services').factory('notifier', function(toastr) {
     toastr.opt
     return {
         success: function(msg) {

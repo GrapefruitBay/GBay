@@ -1,4 +1,4 @@
-app.factory('cachedBooks', function(BookResource, identity) {
+angular.module('app.services').factory('cachedBooks', function(BookResource, identity) {
     var cachedBooks;
     return {
         query: function() {

@@ -2,29 +2,31 @@ var auth = require('./auth'),
     controllers = require('../controllers');
 
 module.exports = function(app) {
+    app.get('/', function (req, res) {
+       res.render('home/home', {currentUser: req.user});
+    });
+
     app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
     app.post('/api/users', controllers.users.createUser);
     app.put('/api/users', auth.isAuthenticated, controllers.users.updateUser);
 
-    app.get('/api/books', controllers.books.getAllBooks);
-    app.post('/api/books', controllers.books.createBook);
-    app.get('/api/books/:id', controllers.books.getBookById);
-    app.put('/api/books/', controllers.books.updateBook);
-    app.delete('/api/books/:id', controllers.books.removeBook);
-    app.put('/api/books/:id', controllers.books.addComment);
+    app.get('/books', controllers.books.getAllBooks);
+    app.post('/books', controllers.books.createBook);
+    app.get('/books/:id', controllers.books.getBookById);
+    app.put('/books/', controllers.books.updateBook);
+    app.delete('/books/:id', controllers.books.removeBook);
+    app.put('/books/:id', controllers.books.addComment);
+    app.put('/books/review/:id', controllers.books.addComment);
 
-    app.get('/api/games', controllers.games.getAllGames);
-    app.get('/api/games/:id', controllers.games.getGameById);
+    app.get('/games', controllers.games.getAllGames);
+    app.get('/games/:id', controllers.games.getGameById);
+    app.post('/games', controllers.games.createGame);
 
-    app.get('/api/movies', controllers.movies.getAllMovies);
-    app.post('/api/movies', controllers.movies.createMovie);
-    app.get('/api/movies/:id', controllers.movies.getMovieById);
-    app.put('/api/movies/', controllers.movies.updateMovie);
-    //app.delete('/api/movies/:id', controllers.movies.removeMovie);
-
-    app.get('/partials/:partialArea/:partialName', function(req, res) {
-        res.render('../../public/app/' + req.params.partialArea + '/' + req.params.partialName)
-    });
+    app.get('/movies', controllers.movies.getAllMovies);
+    app.post('/movies', controllers.movies.createMovie);
+    app.get('/movies/:id', controllers.movies.getMovieById);
+    app.put('/movies/', controllers.movies.updateMovie);
+    app.delete('/movies/:id', controllers.movies.removeMovie);
 
     app.post('/login', auth.login);
     app.post('/logout', auth.logout);

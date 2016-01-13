@@ -2,23 +2,22 @@ var Book = require('mongoose').model('Book');
 
 module.exports = {
     getAllBooks: function (req, res, next) {
-        Book.find({}).exec(function (err, collection) {
+            Book.find({}).exec(function (err, books) {
             if (err) {
                 console.log('Books could not be loaded: ' + err);
             }
 
-            //res.render('booksList', {books: books});
-            res.send(collection);
+            //console.log(books);
+            res.render('books/books-list', {books: books});
         })
     },
-    getBookById: function (req, res, next) {
+        getBookById: function (req, res, next) {
         Book.findOne({_id: req.params.id}).exec(function (err, book) {
             if (err) {
                 console.log('Books could not be loaded: ' + err);
             }
 
-            //res.render('bookDetails', {book: book});
-            res.send(book);
+            res.render('books/book-details', {book: book});
         })
     },
     createBook: function (req, res, next) {
@@ -29,8 +28,7 @@ module.exports = {
                 return;
             }
 
-            //res.render('addBooks', {book: books});
-            res.send(book);
+            res.render('books/book-publish', {book: book});
         })
     },
     updateBook: function (req, res, next) {

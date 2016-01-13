@@ -1,4 +1,4 @@
-app.factory('BookEdit', function($http, $q, BookResource) {
+angular.module('app.services').factory('BookEdit', function($http, $q, BookResource) {
     return {
         publish: function(book) {
             var deferred = $q.defer();

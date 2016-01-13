@@ -1,4 +1,4 @@
-app.factory('auth', function($http, $q, identity, UsersResource) {
+angular.module('app.services').factory('auth', function($http, $q, identity, UsersResource) {
     return {
         signup: function(user) {
             var deferred = $q.defer();

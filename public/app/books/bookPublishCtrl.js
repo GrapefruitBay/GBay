@@ -1,4 +1,4 @@
-app.controller('BookPublishCtrl', function($scope, $location, BookEdit, notifier) {
+angular.module('app.controllers').controller('BookPublishCtrl', function($scope, $location, BookEdit, notifier) {
     $scope.publish = function(book) {
 
         book.type = 'book';

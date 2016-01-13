@@ -1,4 +1,4 @@
-app.factory('cachedMovies', function(MovieResource, identity) {
+angular.module('app.services').factory('cachedMovies', function(MovieResource, identity) {
     var cachedMovies;
     return {
         query: function() {

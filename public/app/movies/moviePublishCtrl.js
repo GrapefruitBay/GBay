@@ -1,4 +1,4 @@
-app.controller('MoviePublishCtrl', function($scope, $location, MovieEdit, notifier) {
+angular.module('app.controllers').controller('MoviePublishCtrl', function($scope, $location, MovieEdit, notifier) {
     $scope.publish = function(movie) {
 
         movie.type = 'movie';

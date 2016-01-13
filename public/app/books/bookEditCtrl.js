@@ -1,4 +1,4 @@
-app.controller('BookEditCtrl', function($scope, $location, $routeParams, BookEdit, cachedBooks, notifier) {
+angular.module('app.controllers').controller('BookEditCtrl', function($scope, $location, $routeParams, BookEdit, cachedBooks, notifier) {
     $scope.book = cachedBooks.query().$promise.then(function(collection) {
         collection.forEach(function(book) {
             if (book._id === $routeParams.id) {

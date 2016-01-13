@@ -53,7 +53,5 @@ module.exports.seedInitialBooks = function () {
             });
             console.log('book added');
         }
-
-
     });
 };

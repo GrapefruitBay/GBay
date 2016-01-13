@@ -1,4 +1,4 @@
-app.factory('identity', function($window, UsersResource) {
+angular.module('app.services').factory('identity', function($window, UsersResource) {
     var user;
     if ($window.bootstrappedUserObject) {
         user = new UsersResource();

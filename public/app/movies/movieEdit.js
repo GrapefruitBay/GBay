@@ -1,4 +1,4 @@
-app.factory('MovieEdit', function($http, $q, MovieResource) {
+angular.module('app.services').factory('MovieEdit', function($http, $q, MovieResource) {
     return {
         publish: function(movie) {
             var deferred = $q.defer();
