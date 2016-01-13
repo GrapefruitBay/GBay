@@ -1,10 +1,9 @@
 {
   "name": "TelerikAcademyCourses",
   "version": "0.0.1",
-  "description": "MEAN Stack application",
+  "description": "",
   "main": "server.js",
   "authors": [
-    "Ivaylo Kenov"
   ],
   "license": "MIT",
   "ignore": [
