@@ -2,17 +2,19 @@ extends ../index
 
 block main-content
     .container(ng-controller="BooksListCtrl")
-        .row
-            .col-md-1 Search
-            .col-md-3
-                input.form-control(type="text", placeholder="Search", ng-model="search")
-            .col-md-1 Sort
-            .col-md-3
-                select.form-control(ng-model="sort")
-                    option(value=" " ng-selected="'true'") Default
-                    option(value="title") Title
-                    option(value="published") Published
+        form.row(action="/books")
+            .col-md-1 Max price
             .col-md-2
+                input.form-control(type="text", placeholder="Max price", name="maxprice")
+            .col-md-1 Filter by
+            .col-md-2
+                select.form-control(ng-model="sort", name="filtertype")
+                    option(value="title", ng-selected="'true'") Title
+                    option(value="author") Author
+            .col-md-1 Filter text
+            .col-md-3
+                input.form-control(type="text", placeholder="Filter text", name="filtertext")
+            button.btn.btn-info.col-md-1(type="submit") Filter
             .col-md-2(ng-show="identity.currentUser.isAdmin()")
                 a.btn.btn-danger(href="/books/edit/") Add new book
         br

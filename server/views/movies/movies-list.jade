@@ -53,7 +53,7 @@ block main-content
                         col(style='width:180px')
                     tbody(role='rowgroup')
                         each movie in movies
-                            tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', ng-repeat="movie in movies" role='row', style="height:10px")
+                            tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', role='row', style="height:10px")
                                 td.k-hierarchy-cell
                                     a.k-icon.k-plus(href='/movies/#{movie._id}', tabindex='-1')
                                 td(role='gridcell')=movie.title

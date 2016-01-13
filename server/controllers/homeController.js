@@ -4,7 +4,6 @@ var Game = require('mongoose').model('Game'),
 
 module.exports = {
     getAllProducts: function (req, res, next) {
-        console.log('VLEZE');
         var games = [],
             movies = [],
             books = [];
@@ -31,8 +30,7 @@ module.exports = {
             }
 
             books = collection;
+            res.render('home/home', {games: games, books: books, movies: movies, currentUser: req.user});
         });
-
-        res.render('home/home', {games: games, books: books, movies: movies, currentUser: req.user});
     }
 };

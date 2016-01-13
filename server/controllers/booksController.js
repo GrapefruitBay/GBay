@@ -12,13 +12,14 @@ module.exports = {
             if (filterType === 'title') {
                 if (req.query.maxprice) {
                     maxPrice = req.query.maxprice;
+                    //console.log("Titile and maxprice");
 
-                    Book.find({price: {$lt: maxPrice}}, {title: filterText}).exec(function (err, books) {
+                    Book.find({"price": {$lt: maxPrice}}).exec(function (err, books) {
                         if (err) {
                             console.log('Books could not be loaded: ' + err);
                         }
 
-                        res.render('booksList', {books: books});
+                        res.render('books/books-list', {books: books});
                     })
                 } else {
                     Book.find({title: filterText}).exec(function (err, books) {
