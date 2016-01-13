@@ -2,10 +2,11 @@ extends ../index
 
 block main-content
    .container
-      img(ng-src="{{book.imageUrl}}")
+      img(ng-src="#{book.imageUrl}")
       h3 {{ book.title }} reviews
+      each review in book.reviews
       ul
-         li(ng-repeat="review in book.reviews") {{ review.content }}
+         li#{review.content}
       .well
          form.form-horizontal(name="addCommentForm")
             fieldset
@@ -17,7 +18,7 @@ block main-content
                   .form-group
                      .col-md-5.control-label Rating:
                      .col-md-2.pull-left
-                        p(ng-show="disableRating()") Your vote: {{ rating }}
+                        p(ng-show="disableRating()") Your vote: #{rating}
                         .rating(ng-show="!disableRating()")
                            span.star(ng-click="setRating(5)") -
                            span.star(ng-click="setRating(4)") -
@@ -27,4 +28,4 @@ block main-content
                         //input.form-control(type="number",  value=1, min="1" max="5" ng-model="book.rating")
                .pull-right(ng-show="identity.isAuthenticated()")
                   button.btn.btn-success(ng-click="addReview(book)", ng-disabled="addCommentForm.$invalid") Add
-                  a.btn.btn-danger(href="#/books/{{book._id}}") Cancel
+                  a.btn.btn-danger(href="/books/#{book._id}") Cancel

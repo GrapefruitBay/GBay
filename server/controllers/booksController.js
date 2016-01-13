@@ -7,6 +7,8 @@ module.exports = {
                 console.log('Books could not be loaded: ' + err);
             }
 
+                console.log(books);
+                
             //console.log(books);
             res.render('books/books-list', {books: books});
         })
@@ -14,7 +16,7 @@ module.exports = {
         getBookById: function (req, res, next) {
         Book.findOne({_id: req.params.id}).exec(function (err, book) {
             if (err) {
-                console.log('Books could not be loaded: ' + err);
+                console.log('Book could not be loaded: ' + err);
             }
 
             res.render('books/book-details', {book: book});
@@ -47,7 +49,7 @@ module.exports = {
         if (req.user) {
             var review = req.body.review;
             Book.findOneAndUpdate({_id: req.body._id}, {$push: {reviews: review}}, {safe: true, upsert: true}, function () {
-                res.end();
+                res.render('books/book-review');
             })
         }
         else {
