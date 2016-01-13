@@ -50,7 +50,7 @@ block main-content
                         each game in games
                             tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', role='row')
                                 td.k-hierarchy-cell
-                                    a.k-icon.k-plus(href='/games/{{ game._id }}', tabindex='-1')
+                                    a.k-icon.k-plus(href='/games/#{game._id}', tabindex='-1')
                                 td(role='gridcell')=game.title
                                 td(role='gridcell')=game.manufacturer
                                 td(role='gridcell')=game.price

@@ -7,9 +7,6 @@ module.exports = {
                 console.log('Books could not be loaded: ' + err);
             }
 
-            console.log(books);
-
-            //console.log(books);
             res.render('books/books-list', {books: books});
         })
     },

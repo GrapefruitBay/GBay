@@ -29,4 +29,14 @@ module.exports = function (app, config) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + '/public'));
+    app.use(function(req, res, next) {
+        if (req.user) {
+            app.locals.currentUser = req.user;
+        }
+        else {
+            app.locals.currentUser = undefined;
+        }
+
+        next();
+    });
 };

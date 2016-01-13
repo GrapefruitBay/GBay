@@ -52,17 +52,18 @@ block main-content
                         col(style='width:180px')
                         col(style='width:180px')
                     tbody(role='rowgroup')
-                        tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', ng-repeat="movie in movies" role='row', style="height:10px")
-                            td.k-hierarchy-cell
-                                a.k-icon.k-plus(href='/movies/#{movie._id}', tabindex='-1')
-                            td(role='gridcell')=movie.title
-                            td(role='gridcell')=movie.director
-                            td(role='gridcell')=movie.price
-                            td(role='gridcell')=movie.published
-                            td(role='gridcell')=movie.quantity
-                            td(role='gridcell')
-                                a(href='#{movie.imageUrl}')
-                                    img(src="#{movie.imageUrl}", width="60")
+                        each movie in movies
+                            tr.k-master-row.ng-scope(data-uid='c74522dc-0076-4c18-ba56-80b2de559575', ng-repeat="movie in movies" role='row', style="height:10px")
+                                td.k-hierarchy-cell
+                                    a.k-icon.k-plus(href='/movies/#{movie._id}', tabindex='-1')
+                                td(role='gridcell')=movie.title
+                                td(role='gridcell')=movie.director
+                                td(role='gridcell')=movie.price
+                                td(role='gridcell')=movie.published
+                                td(role='gridcell')=movie.quantity
+                                td(role='gridcell')
+                                    a(href='#{movie.imageUrl}')
+                                        img(src="#{movie.imageUrl}", width="60")
             .k-pager-wrap.k-grid-pager.k-widget.k-floatwrap(data-role='pager')
                 a.k-link.k-pager-nav.k-pager-first.k-state-disabled(href='', title='Go to the first page', data-page='1', tabindex='-1')
                     span.k-icon.k-i-seek-w Go to the first page

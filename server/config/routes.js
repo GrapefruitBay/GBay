@@ -2,9 +2,7 @@ var auth = require('./auth'),
     controllers = require('../controllers');
 
 module.exports = function(app) {
-    app.get('/', function (req, res) {
-       res.render('home/home', {currentUser: req.user});
-    });
+    app.get('/', controllers.home.getAllProducts);
 
     app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
     app.post('/api/users', controllers.users.createUser);
@@ -30,6 +28,11 @@ module.exports = function(app) {
 
     app.post('/login', auth.login);
     app.post('/logout', auth.logout);
+
+    app.get('/signup', function (req, res) {
+        console.log("RENDER SIGNUP");
+        res.render('account/signup');
+    });
 
     app.get('/api/*', function(req, res) {
         res.status(404);

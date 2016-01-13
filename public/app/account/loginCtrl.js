@@ -1,5 +1,6 @@
 angular.module('app.controllers').controller('LoginCtrl', function($scope, $location, notifier, identity, auth) {
     $scope.identity = identity;
+    console.log("Login ctrl public");
 
     $scope.login = function(user) {
         auth.login(user).then(function(success) {

@@ -14,13 +14,13 @@
                 span.caret
             ul.dropdown-menu
                 li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="#/admin/users") Users
+                    a(href="/admin/users") Users
                 li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="#/books/edit") Publish book
+                    a(href="/books/edit") Publish book
                 li(ng-show="identity.isAuthenticated()")
-                    a(href="#/profile") Profile
+                    a(href="/profile") Profile
                 li
-                    a(href="#" ng-click="logout()") Sign Out
+                    a(href="/" ng-click="logout()") Sign Out
 
         li.dropdown(ng-show="identity.isAuthenticated()")
             a.dropdown-toggle.waves-effect.waves-light(data-toggle="dropdown", role="button", aria-expanded="false")
