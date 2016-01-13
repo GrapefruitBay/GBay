@@ -30,9 +30,9 @@ module.exports = function(app) {
     app.post('/logout', auth.logout);
 
     app.get('/signup', function (req, res) {
-        console.log("RENDER SIGNUP");
         res.render('account/signup');
     });
+    app.post('/signup', controllers.users.createUser);
 
     app.get('/api/*', function(req, res) {
         res.status(404);

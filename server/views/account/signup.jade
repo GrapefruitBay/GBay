@@ -1,31 +1,31 @@
 extends ../index
 
 block main-content
-    .container
+    .container(ng-controller="SignUpCtrl")
         .well
-            form.form-horizontal(name="signUpForm")
+            form.form-horizontal(method="post" action="/signup")
                 fieldset
                     legend Create user
                     .form-group
                         label.col-md-2.control-label(for="first-name") First Name
                         .col-md-10
-                            input.form-control(type="text",  placeholder="First Name", ng-model="user.firstName", required)
+                            input.form-control(type="text",  placeholder="First Name", name="firstName", ng-model="user.firstName", required)
                     .form-group
                         label.col-md-2.control-label(for="last-name") Last Name
                         .col-md-10
-                            input.form-control(type="text",  placeholder="Last Name", ng-model="user.lastName", required)
+                            input.form-control(type="text",  placeholder="Last Name", name="lastName", ng-model="user.lastName", required)
                     .form-group
                         label.col-md-2.control-label(for="username") Username
                         .col-md-10
-                            input.form-control(type="text",  placeholder="Username", ng-model="user.username", required)
+                            input.form-control(type="text", name="username", placeholder="Username", ng-model="user.username", required)
                     .form-group
                         label.col-md-2.control-label(for="password") Password
                         .col-md-10
-                            input.form-control(type="password",  placeholder="Password", ng-model="user.password", required)
+                            input.form-control(type="password", name="password", placeholder="Password", ng-model="user.password", required)
                     .form-group
                         label.col-md-2.control-label(for="confirmPassword") Confirm Password
                         .col-md-10
-                            input.form-control(type="password", placeholder="Confirm Password", required)
+                            input.form-control(type="password", name="confirmPassword", placeholder="Confirm Password", required)
                     .pull-right
-                        button.btn.btn-primary(ng-click="signup(user)", ng-disabled="signUpForm.$invalid") Create
+                        input(type="submit" class="btn btn-lg" value="Create", ng-disabled="signUpForm.$invalid")
                         a.btn.btn-primary(href="#/") Cancel
