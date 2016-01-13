@@ -1,0 +1,29 @@
+extends ../index
+
+block main-content
+   .container
+
+      h3 {{ movie.title }} reviews
+      img(ng-src="{{movie.imageUrl}}")
+      ul
+         li(ng-repeat="review in movie.reviews") {{ review.content }}
+      .well
+         form.form-horizontal(name="addCommentForm")
+            fieldset
+               legend Add comment
+                  .form-group
+                     label.col-md-2.control-label(for="review") Review*
+                     .col-md-10
+                        textarea.form-control(rows="2", placeholder="Enter your comments", ng-model="movie.comment", required)
+                  .form-group
+                     .col-md-5.control-label Rating
+                     .pull-left
+                        .rating
+                           span.star -
+                           span.star -
+                           span.star -
+                           span.star -
+                           span.star -
+               .pull-right(ng-show="identity.isAuthenticated()")
+                  button.btn.btn-success(ng-click="addReview(movie)", ng-disabled="addCommentForm.$invalid") Add
+                  a.btn.btn-danger(href="#/movies/{{movie._id}}") Cancel

@@ -1,0 +1,17 @@
+extends ../index
+
+block main-content
+    .container
+        h2 {{ movie.title }}
+        h3 {{ movie.director }}
+        img(ng-src="{{movie.imageUrl}}")
+        p Description: &nbsp  {{ movie.description }}
+        ul
+            li(ng-repeat="tag in movie.tags") {{ tag }}
+        p {{ movie.released}}
+        ul Reviews
+            li(ng-repeat="review in movie.reviews") {{ review.content }}
+            li(ng-show="identity.isAuthenticated()")
+                a(href="#/movies/{{movie._id}}/review") Add review
+        .pull-right(ng-show="identity.currentUser.isAdmin()")
+            a.btn.btn-danger(href="#/movies/edit/{{ movie._id }}") Edit movie

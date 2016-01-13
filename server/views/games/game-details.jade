@@ -1,0 +1,11 @@
+extends ../index
+
+block main-content
+    .container
+        h2 {{ game.title }}
+        h3 {{ game.author }}
+        img(ng-src="{{game.imageUrl}}")
+        p Description: &nbsp  {{ game.description }}
+        ul
+            li(ng-repeat="tag in game.tags") {{ tag }}
+        p {{ game.published}}
