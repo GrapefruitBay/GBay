@@ -14,13 +14,13 @@ angular.module('app.controllers').controller('BookEditCtrl', function($scope, $l
         book.genres = book.genres.split(' ');
         book.tags = book.tags.split(' ');
         BookEdit.edit(book).then(function() {
-            notifier.success('Book edited successfully!');
+            notifier.info('Book edited successfully!');
             $location.path('/books/' + book._id);
         })
     },
     $scope.deleteBook = function(bookId) {
         BookEdit.deleteBook(bookId).then(function() {
-            notifier.success('Book deleted successfully!');
+            notifier.info('Book deleted successfully!');
             $location.path('/books');
         })
     }

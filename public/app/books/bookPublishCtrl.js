@@ -2,10 +2,10 @@ angular.module('app.controllers').controller('BookPublishCtrl', function($scope,
     $scope.publish = function(book) {
 
         book.type = 'book';
-        book.genres = book.genres.split(' ');
-        book.tags = book.tags.split(' ');
+        book.genres = book.genres.split(',');
+        book.tags = book.tags.split(',');
         BookEdit.publish(book).then(function() {
-            notifier.success('Book published successfully!');
+            notifier.info('Book published successfully!');
             $location.path('/books');
         })
     }

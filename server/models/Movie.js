@@ -1,25 +1,28 @@
 var mongoose = require('mongoose');
+var item = require('./Item');
 
-var moviesSchema = mongoose.Schema({
-    type: String,
-    title: String,
-    director: String,
-    actors: [String],
-    published: Number,
-    tags: [String],
-    genres: [String],
-    price: Number,
-    quantity: Number,
-    description: String,
-    reviews: [{
-        author: String,
-        content: String,
-        rating: Number
-    }],
-    imageUrl: String
-});
+var movie = function () {
+    var movie;
 
-var Movie = mongoose.model('Movie', moviesSchema);
+    movie = Object.create(item);
+
+    Object.defineProperty(movie, 'init', {
+        value: function () {
+            item().init.call(this);
+
+            this.genres = String;
+            this.director = String;
+            this.actors = [String];
+
+            return this;
+        }
+    });
+
+    return movie;
+};
+
+var movieSchema = mongoose.Schema(movie().init());
+var Movie = mongoose.model('Movie', movieSchema);
 
 module.exports.seedInitialMovies = function() {
     Movie.find({}).exec(function(err, collection) {

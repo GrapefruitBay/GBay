@@ -1,6 +1,19 @@
-div(ng-repeat="movie in movies | orderBy: '-published' | limitTo: 10")
-    .row
-        .col-md-3
-            | {{ movie.published }}
-        .col-md-9
-            a(href="#/movies/{{ movie._id }}") {{ movie.title }}
+div.row.text-center
+
+    .col-md-2(ng-repeat="movie in movies | orderBy: '-published' | limitTo: 10")
+        .card.hoverable
+            .card-image
+                a(href="#/movies/{{movie._id}}")
+                    img(height="200", src='{{movie.imageUrl}}')
+                    span.card-title {{movie.title}}
+                .card-content
+                    p.truncate
+                        | {{movie.description}}
+
+                .card-action.text-center
+                    a(href="#/movies/{{movie._id}}")
+                        button.btn.btn-default.waves-effect.waves-light(type='button') View
+                    a(href="#/cart")
+                        button.btn.btn-info.waves-effect.waves-light.btn-price(type='button')
+                            span.buy Buy Now
+                            span.price {{movie.price}}

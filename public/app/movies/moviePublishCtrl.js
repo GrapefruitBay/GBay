@@ -5,7 +5,7 @@ angular.module('app.controllers').controller('MoviePublishCtrl', function($scope
         movie.genres = movie.genres.split(' ');
         movie.tags = movie.tags.split(' ');
         MovieEdit.publish(movie).then(function() {
-            notifier.success('Movie added successfully!');
+            notifier.info('Movie added successfully!');
             $location.path('/movies');
         })
     }

@@ -24,14 +24,14 @@
                         input.form-control(type="number",  placeholder="Year", ng-model="book.published", required)
                     label.col-md-2.control-label(for="price") Price*
                     .col-md-4
-                        input.form-control(type="number", ng-model="book.price", required)
+                        input.form-control(type="double", ng-model="book.price", required)
                 .form-group
                     label.col-md-2.control-label(for="genre") Genres*
                     .col-md-4
-                        input.form-control(type="text", placeholder="enter genre(s) separated by space", ng-model="book.genres", required)
+                        input.form-control(type="text", placeholder="enter genre(s) separated by comma", ng-model="book.genres", required)
                     label.col-md-2.control-label(for="tags") Tags*
                     .col-md-4
-                        input.form-control(type="text", placeholder="enter tag(s) separated by space", ng-model="book.tags", required)
+                        input.form-control(type="text", placeholder="enter tag(s) separated by comma", ng-model="book.tags", required)
                 .form-group
                     label.col-md-2.control-label(for="description") Description
                     .col-md-4
