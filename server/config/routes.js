@@ -25,6 +25,16 @@ module.exports = function(app) {
     app.get('/movies/:id', controllers.movies.getMovieById);
     app.put('/movies/', controllers.movies.updateMovie);
     app.delete('/movies/:id', controllers.movies.removeMovie);
+    app.put('/movies/:id', controllers.movies.addComment);
+    app.put('/movies/review/:id', controllers.movies.addComment);
+
+    app.get('/stationeries', controllers.stationeries.getAllStationeries);
+    app.post('/stationeries', controllers.stationeries.createStationery);
+    app.get('/stationeries/:id', controllers.stationeries.getStationeryById);
+    app.put('/stationeries/', controllers.stationeries.updateStationery);
+    app.delete('/stationeries/:id', controllers.stationeries.removeStationery);
+    app.put('/stationeries/:id', controllers.stationeries.addComment);
+    app.put('/stationeries/review/:id', controllers.stationeries.addComment);
 
     app.post('/login', auth.login);
     app.post('/logout', auth.logout);
