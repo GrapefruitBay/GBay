@@ -1,2 +1,20 @@
-div(ng-repeat="game in games")
-    a(href="#/games/{{ game._id }}") {{ game.title }}
+div.row.text-center
+    .col-md-2(ng-repeat="game in games | limitTo: 10")
+        .card.hoverable
+            .card-image
+                a(href="#/games/{{game._id}}")
+                    img(height="200", src='{{game.imageUrl}}')
+                    span.card-title {{game.title}}
+                .card-content
+                    p.truncate
+                        | {{game.description}}
+
+                .card-action
+                    a(href="#/games/{{game._id}}")
+                        button.btn.btn-default.waves-effect.waves-light(type='button') View
+                    a(href="#/cart")
+                        button.btn.btn-info.waves-effect.waves-light.btn-price(type='button')
+                            span.buy Buy Now
+                            span.price {{game.price}}
+
+

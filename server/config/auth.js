@@ -8,10 +8,15 @@ module.exports = {
                 res.send({success: false})
             }
 
-            req.logIn(user, function(err) {
-                if (err) return next(err);
-                res.send({success: true, user: user});
-            })
+            if (user.roles == 'banned') {
+                console.log('banned');
+                res.send({success: false});
+            }else{
+                req.logIn(user, function(err) {
+                    if (err) return next(err);
+                    res.send({success: true, user: user});
+                })
+            }
         });
 
         auth(req, res, next);

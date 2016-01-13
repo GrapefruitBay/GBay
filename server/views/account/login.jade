@@ -1,0 +1,35 @@
+.navbar-right(ng-controller="LoginCtrl")
+    form.navbar-form(ng-hide="identity.isAuthenticated()")
+        .form-group
+            input.form-control(type="text", placeholder="Username", ng-model="user.username")
+            input.form-control(type="password", placeholder="Password", ng-model="user.password")
+        button.btn.btn-primary(ng-click="login(user)") Login
+        a.btn.btn-primary(href="/signup") Sign Up
+
+    ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+
+        li.dropdown
+            a.dropdown-toggle.waves-effect.waves-light(href="", data-toggle="dropdown")
+                | {{ identity.currentUser.firstName + ' ' + identity.currentUser.lastName }}
+                span.caret
+            ul.dropdown-menu
+                li(ng-show="identity.currentUser.isAdmin()")
+                    a(href="/admin/users") Users
+                li(ng-show="identity.currentUser.isAdmin()")
+                    a(href="/books/edit") Publish book
+                li(ng-show="identity.isAuthenticated()")
+                    a(href="/profile") Profile
+                li
+                    a(href="/" ng-click="logout()") Sign Out
+
+        li.dropdown(ng-show="identity.isAuthenticated()")
+            a.dropdown-toggle.waves-effect.waves-light(data-toggle="dropdown", role="button", aria-expanded="false")
+                i.material-icons shopping_cart {{identity.currentUser.cart.length}}
+            ul.dropdown-menu(role="menu")
+                li
+                    a(href="#") View Shopping Cart
+                li
+                    a(href="#") Empty Shopping Cart
+                li.divider
+                li
+                    p.text-center Total: {{}}

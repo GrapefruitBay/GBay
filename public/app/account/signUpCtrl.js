@@ -1,4 +1,4 @@
-app.controller('SignUpCtrl', function($scope, $location, auth, notifier) {
+angular.module('app.controllers').controller('SignUpCtrl', function($scope, $location, auth, notifier) {
     $scope.signup = function(user) {
         auth.signup(user).then(function() {
             notifier.success('Registration successful!');

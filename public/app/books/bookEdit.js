@@ -1,4 +1,4 @@
-app.factory('BookEdit', function($http, $q, BookResource) {
+angular.module('app.services').factory('BookEdit', function($http, $q, BookResource) {
     return {
         publish: function(book) {
             var deferred = $q.defer();
@@ -21,6 +21,20 @@ app.factory('BookEdit', function($http, $q, BookResource) {
                 deferred.resolve();
             }, function(response) {
                 deferred.reject(response);
+            });
+
+            return deferred.promise;
+        },
+        addReview: function(book) {
+            var deferred = $q.defer();
+
+            $http.put('/api/books/' + book._id, book).success(function(response) {
+                if (response.success) {
+                    deferred.resolve(true);
+                }
+                else {
+                    deferred.resolve(false);
+                }
             });
 
             return deferred.promise;

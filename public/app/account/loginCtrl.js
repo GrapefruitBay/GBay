@@ -1,20 +1,21 @@
-app.controller('LoginCtrl', function($scope, $location, notifier, identity, auth) {
+angular.module('app.controllers').controller('LoginCtrl', function($scope, $location, notifier, identity, auth) {
     $scope.identity = identity;
+    console.log("Login ctrl public");
 
     $scope.login = function(user) {
         auth.login(user).then(function(success) {
             if (success) {
-                notifier.success('Successful login!');
+                notifier.info('Successful login!');
             }
             else {
-                notifier.error('Username/Password combination is not valid!');
+                notifier.warning('Username/Password combination is not valid!');
             }
         });
     }
 
     $scope.logout = function() {
         auth.logout().then(function() {
-            notifier.success('Successful logout!');
+            notifier.info('Successful logout!');
             if ($scope.user) {
                 $scope.user.username = '';
                 $scope.user.password = '';

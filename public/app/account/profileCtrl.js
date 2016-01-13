@@ -1,4 +1,4 @@
-app.controller('ProfileCtrl', function($scope, $location, auth, identity) {
+angular.module('app.controllers').controller('ProfileCtrl', function($scope, $location, auth, identity) {
     $scope.user = {
         firstName: identity.currentUser.firstName,
         lastName: identity.currentUser.lastName

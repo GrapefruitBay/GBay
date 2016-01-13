@@ -1,28 +1,65 @@
-.container
-    .jumbotron.text-center
-        h1 Grapefruit Bay Bookstore
-        h2 The creativity bay
-    nav.navbar.navbar-default
-        .container-fluid
-            .navbar-header
-                button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
-                    span.sr-only Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                a.navbar-brand(href="#") Brand
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                ul.nav.navbar-nav
+section.container
+    h1.text-center Grapefruit Bay Bookstore
+
+    #carousel1.carousel.slide.carousel-fade.hoverable
+        // Indicators
+        ol.carousel-indicators
+            li.active(data-target='#carousel1', data-slide-to='0')
+            li(data-target='#carousel1', data-slide-to='1')
+            li(data-target='#carousel1', data-slide-to='2')
+        // Wrapper for slides
+        .carousel-inner.z-depth-2(role='listbox')
+            // First slide
+            .item.active
+                .view.overlay.hm-blue-slight.img-container
+                    a
+                        img.img-responsive.perfect-fit(src='http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg', alt='slide1')
+                        .mask.waves-effect.waves-light
+                    .carousel-caption.hidden-xs
+                        .animated.fadeInDown
+                            h5 {{$scope.randomReview = $scope.randomBook.reviews[Math.floor(Math.random() * $scope.randomBook.reviews.length)];}}
+
+            .item
+                .view.overlay.hm-blue-slight.img-container
+                    a
+                        img.img-responsive.perfect-fit(src='http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg', alt='slide2')
+                        .mask.waves-effect.waves-light
+                    .carousel-caption.hidden-xs
+                        .animated.fadeInDown
+                            h5 Lorem ipsum dolor sit amet
+
+            .item
+                .view.overlay.hm-blue-slight.img-container
+                    a
+                        img.img-responsive.perfect-fit(src='http://www.i-love-cats.com/images/2015/04/12/cat-wallpaper-38.jpg', alt='slide3')
+                        .mask.waves-effect.waves-light
+                    .carousel-caption.hidden-xs
+                        .animated.fadeInDown
+                            h5 Lorem ipsum dolor sit amet
+
+        //a.left.carousel-control.new-control(href='#carousel1', role='button', data-slide='prev')
+        //
+        //    span.fa.fa.fa-angle-left.waves-effect.waves-light
+        //    span.sr-only Previous
+        //a.right.carousel-control.new-control(href='#carousel1', role='button', data-slide='next')
+        //    span.fa.fa.fa-angle-right.waves-effect.waves-light
+        //    span.sr-only Next
+
+    // /.carousel
+
+    nav.navbar.z-depth-2.deep-orange
+        .container
+            #bs-example-navbar-collapse-3.collapse.navbar-collapse.nav.navbar-center
+                ul.nav.navbar-nav.navbar-center
                     li
-                        a(href="#")
-                            | Books
-                            span.sr-only (current)
+                        a.waves-effect.waves-effect.waves-light(href="#/books") Books
                     li
-                        a(href="#") Games
+                        a.waves-effect.waves-effect.waves-light(href="#/games") Games
+                    li
+                        a.waves-effect.waves-effect.waves-light(href="#/movies") DVD & Blu-ray
                     li.dropdown
-                        a.dropdown-toggle(data-toggle="dropdown", role="button", aria-expanded="false")
+                        a.dropdown-toggle.waves-effect.waves-light(data-toggle="dropdown", role="button", aria-expanded="false")
                             | Stationary
-                            span.caret
                         ul.dropdown-menu(role="menu")
                             li
                                 a(href="#") Office supplies
@@ -35,16 +72,72 @@
                             li.divider
                             li
                                 a(href="#") Drawing & art set
-                            li.divider
-                            li
-                                a(href="#") Separated link
+
+.container
+    .row
+        .panel.panel-default
+            .panel-heading.text-center New Books
+            .panel-body(ng-include="'/partials/main/new-books'")
+            .panel-footer
+                .row.text-center
+                    ul.pagination.pag-circle
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_left
+                        li(ng-repeat='page in [1, 2, 3, 4, 5]', ng-class="page == vm.currentPage ? 'active' : ''")
+                            a(href='#', ng-click='vm.search(request, page)') {{page}}
+
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_right
+
 
     .row
-        .col-md-6
-            .panel.panel-primary
-                .panel-heading.text-center New Books
-                .panel-body(ng-include="'/partials/main/new-books'")
-        .col-md-6
-            .panel.panel-primary
-                .panel-heading.text-center Games
-                .panel-body(ng-include="'/partials/main/games'")
+        .panel.panel-default
+            .panel-heading.text-center Games
+            .panel-body(ng-include="'/partials/main/games'")
+            .panel-footer
+                .row.text-center
+                    ul.pagination.pag-circle
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_left
+                        li(ng-repeat='page in [1, 2, 3, 4, 5]', ng-class="page == vm.currentPage ? 'active' : ''")
+                            a(href='#', ng-click='vm.search(request, page)') {{page}}
+
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_right
+    .row
+        .panel.panel-default
+            .panel-heading.text-center New DVD's & Blu-ray's
+            .panel-body(ng-include="'/partials/main/new-movies'")
+            .panel-footer
+                .row.text-center
+                    ul.pagination.pag-circle
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_left
+                        li(ng-repeat='page in [1, 2, 3, 4, 5]', ng-class="page == vm.currentPage ? 'active' : ''")
+                            a(href='#', ng-click='vm.search(request, page)') {{page}}
+
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_right
+    .row
+        .panel.panel-default
+            .panel-heading.text-center Stationaries
+            .panel-body(ng-include="'/partials/main/stationaries'")
+            .panel-footer
+                .row.text-center
+                    ul.pagination.pag-circle
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_left
+                        li(ng-repeat='page in [1, 2, 3, 4, 5]', ng-class="page == vm.currentPage ? 'active' : ''")
+                            a(href='#', ng-click='vm.search(request, page)') {{page}}
+
+                        li
+                            a(href='#!')
+                                i.material-icons chevron_right
+

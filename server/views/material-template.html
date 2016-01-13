@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Material Design Bootstrap Template</title>
+  <link href="../../public/lib/mdb-free/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../public/lib/mdb-free/css/mdb.min.css" rel="stylesheet">
+  <script type="text/javascript" src="../../public/lib/mdb-free/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../../public/lib/mdb-free/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../public/lib/mdb-free/js/mdb.min.js"></script>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar z-depth-2 info-color">
+    <div class="container ">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand waves-effect waves-light" href="#">MDBootstrap</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#products" class="waves-effect waves-light">Products <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">List (click to expand) <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="http://mdbootstrap.com/product/magic-portfolio-for-video-maker/">Video Maker</a>
+              </li>
+              <li><a href="http://mdbootstrap.com/material-design-for-bootstrap/">Material Design for Bootstrap</a>
+              </li>
+              <li><a href="http://mdbootstrap.com/product/magic-portfolio-for-creative-agency">Creative Agency</a>
+              </li>
+              <li><a href="http://mdbootstrap.com/product/magic-portfolio-photographer">Photographer Portfolio</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="#footer">Footer</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-right waves-effect waves-light" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row page-content">
+
+      <!-- Blog Sidebar Widgets Column -->
+      <div class="col-md-3">
+        <div class="sidebar">
+          <!-- Subscription widget -->
+          <div class="card-panel">
+            <div class="row">
+              <form class="col-md-12">
+                <h5>Subscribe to our newsletter</h5>
+                <h6>Once a week we will send you a summary of the most useful news</h6>
+                <br>
+                <div class="input-field">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix">Your Name</label>
+                </div>
+                <div class="input-field">
+                  <i class="material-icons prefix">mail</i>
+                  <input id="icon_telephone" type="tel" class="validate">
+                  <label for="icon_telephone">Your Email</label>
+                </div>
+              </form>
+              <div class="text-center">
+                <button type="button" class="btn btn-info waves-effect waves-light">Subscribe</button>
+              </div>
+            </div>
+          </div>
+          <!--/.Subscription widget -->
+          <br>
+          <!-- Category widget -->
+          <div class="collection">
+            <a href="#!" class="collection-item">Category 1</a>
+            <a href="#!" class="collection-item active">Category 1</a>
+            <a href="#!" class="collection-item">Category 1</a>
+            <a href="#!" class="collection-item">Category 1</a>
+            <a href="#!" class="collection-item">Category 1</a>
+            <a href="#!" class="collection-item">Category 1</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-9">
+
+
+
+        <!-- carousel -->
+        <div id="carousel-example-generic" class="carousel slide carousel-fade">
+
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+            </li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+
+            <!-- First slide -->
+            <div class="item active">
+              <div class="carousel-caption">
+                <div data-animation="animated fadeInRightBig">
+                  <h3 class="h3-responsive">This is the caption for slide 1</h3>
+                  <h5 class="h5-responsive">This is the caption for slide 1</h5>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.item -->
+
+            <!-- Second slide -->
+            <div class="item">
+              <div class="carousel-caption">
+                <div data-animation="animated fadeInDownBig">
+                  <h3 class="h3-responsive">This is the caption for slide 1</h3>
+                  <h5 class="h5-responsive">This is the caption for slide 1</h5>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.item -->
+
+            <!-- Third slide -->
+            <div class="item">
+              <div class="carousel-caption">
+                <div data-animation="animated fadeInLeftBig">
+                  <h3 class="h3-responsive">This is the caption for slide 1</h3>
+                  <h5 class="h5-responsive">This is the caption for slide 1</h5>
+                </div>
+              </div>
+            </div>
+            <!-- /.item -->
+
+          </div>
+          <!-- /.carousel-inner -->
+
+          <!-- Controls -->
+          <a class="left carousel-control new-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="fa fa fa-angle-left waves-effect waves-light"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control new-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="fa fa fa-angle-right waves-effect waves-light"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+
+        </div>
+        <!-- /.carousel -->
+
+        <!-- Page Features -->
+        <div class="row text-center">
+
+          <!-- /.col-md-4 -->
+          <div class="col-md-4">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src="http://brandflow.pl/wp-content/uploads/2015/08/p5.jpg">
+                <span class="card-title">Product 1 - 25$</span>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-default waves-effect waves-light">View</button>
+                <button type="button" class="btn btn-info waves-effect waves-light">Buy now!</button>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-4 -->
+          <div class="col-md-4">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src="http://brandflow.pl/wp-content/uploads/2015/08/p5.jpg">
+                <span class="card-title">Product 2 - 25$</span>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-default waves-effect waves-light">View</button>
+                <button type="button" class="btn btn-info waves-effect waves-light">Buy now!</button>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-4 -->
+          <!-- /.col-md-4 -->
+          <div class="col-md-4">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src="http://brandflow.pl/wp-content/uploads/2015/08/p5.jpg">
+                <span class="card-title">Product 3 - 25$</span>
+              </div>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
+              <div class="card-action">
+                <button type="button" class="btn btn-default waves-effect waves-light">View</button>
+                <button type="button" class="btn btn-info waves-effect waves-light">Buy now!</button>
+              </div>
+            </div>
+          </div>
+          <!-- /.col-md-4 -->
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+  <div class="container">
+
+    <hr>
+
+  </div>
+  <!-- /.container -->
+
+
+  <!-- Footer -->
+  <footer class="page-footer info-color darken-1" if="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+          <p class="white-text center-on-small-only">GET STARTED</p>
+          <p class="white-text center-on-small-only">Register for free and start to create amazing things.</p>
+          <a href="http://mdbootstrap.com/getting-started/" class="btn btn-danger waves-effect waves-light">Get started!</a>
+
+        </div>
+        <hr class="hidden-lg hidden-md">
+
+        <div class="col-md-2">
+          <p class="white-text center-on-small-only">USEFUL LINKS</p>
+          <ul>
+            <li><a href="#" data-toggle="modal" data-target="#myModal" class="grey-text text-lighten-3" href="#!">Contact us</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/support/" target="_blank">Support</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/bugs/" target="_blank">Bug report</a>
+            </li>
+
+
+          </ul>
+        </div>
+        <hr class="hidden-lg hidden-md">
+
+        <div class="col-md-3 text-center">
+          <p class="white-text text-center"> SOCIAL MEDIA</p>
+          <a target="_blank" href="https://www.facebook.com/mdbootstrap" class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
+          <a target="_blank" href="https://twitter.com/MDBootstrap" class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
+          <a target="_blank" href="https://plus.google.com/u/0/b/107863090883699620484/107863090883699620484/posts" class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="col-md-10 col-md-offset-1"> © 2015 Copyright <a href="http://www.MDBootstrap.com">MDBootstrap.com </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- SCRIPTS -->
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <!-- Material Design Bootstrap -->
+  <script type="text/javascript" src="js/mdb.js"></script>
+
+
+</body>
+
+</html>

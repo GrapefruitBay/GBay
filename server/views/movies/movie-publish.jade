@@ -1,0 +1,47 @@
+extends ../index
+
+block main-content
+    .container(ng-controller="MoviePublishCtrl")
+        .well
+            form.form-horizontal(name="newMovieForm")
+                fieldset
+                    legend Add new movie
+                    .form-group
+                        label.col-md-2.control-label(for="title") Title*
+                        .col-md-4
+                            input.form-control(type="text",  placeholder="Title", ng-model="movie.title", required)
+                        label.col-md-2.control-label(for="director") Director*
+                        .col-md-4
+                            input.form-control(type="text",  placeholder="Director", ng-model="movie.director", required)
+                    .form-group
+                        label.col-md-2.control-label(for="stars") Stars*
+                        .col-md-4
+                            input.form-control(type="text", placeholder="enter stars separated by ,", ng-model="movie.actors")
+                        label.col-md-2.control-label(for="quantity") Quantity*
+                        .col-md-4
+                            input.form-control(type="number", ng-model="movie.quantity", required)
+                    // TODO: add yearPicker
+                    .form-group
+                        label.col-md-2.control-label(for="year") Year published*
+                        .col-md-4
+                            input.form-control(type="number",  placeholder="Year", ng-model="movie.published", required)
+                        label.col-md-2.control-label(for="price") Price*
+                        .col-md-4
+                            input.form-control(type="number", ng-model="movie.price", required)
+                    .form-group
+                        label.col-md-2.control-label(for="genre") Genres*
+                        .col-md-4
+                            input.form-control(type="text", placeholder="enter genre(s) separated by space", ng-model="movie.genres", required)
+                        label.col-md-2.control-label(for="tags") Tags*
+                        .col-md-4
+                            input.form-control(type="text", placeholder="enter tag(s) separated by space", ng-model="movie.tags", required)
+                    .form-group
+                        label.col-md-2.control-label(for="description") Description
+                        .col-md-4
+                            textarea.form-control(rows="4", placeholder="Enter description", ng-model="movie.description")
+                        label.col-md-2.control-label(for="image") Image URL*
+                        .col-md-4
+                            input.form-control(type="text", placeholder="Image", ng-model="movie.imageUrl", required)
+                    .pull-right
+                        button.btn.btn-success(ng-click="publish(movie)", ng-disabled="newMovieForm.$invalid") Create
+                        a.btn.btn-danger(href="#/") Cancel
