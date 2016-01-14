@@ -28,6 +28,7 @@ module.exports = {
     isAuthenticated: function(req, res, next) {
         if (!req.isAuthenticated()) {
             res.status(403);
+            res.render('../views/unauthorized/unauthorized');
             res.end();
         }
         else {

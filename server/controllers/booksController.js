@@ -66,8 +66,6 @@ module.exports = {
                 console.log('Book could not be loaded: ' + err);
             }
 
-            console.log('Book details controller: ');
-            console.log(book);
             res.render('books/book-details', {book: book});
         })
     },
@@ -79,8 +77,6 @@ module.exports = {
                 return;
             }
 
-            console.log("Create book controller: ");
-            console.log(book);
             res.render('books/book-details', {book: book});
         })
     },
