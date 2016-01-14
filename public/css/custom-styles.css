@@ -30,11 +30,11 @@ img.perfect-fit {
 }
 
 .img-container {
-    width: 1200px;
-    height: 600px;
+    width: 950px;
+    height: 200px;
     display: inline-block;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 0px;
     background-color: #ccc;
 }
 
