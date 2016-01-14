@@ -67,6 +67,8 @@ module.exports = {
                 console.log('Book could not be loaded: ' + err);
             }
 
+            console.log('Book details controller: ');
+            console.log(book);
             res.render('books/book-details', {book: book});
         })
     },
@@ -78,20 +80,23 @@ module.exports = {
                 return;
             }
 
+            console.log("Create book controller: ");
+            console.log(book);
             res.render('books/book-publish', {book: book});
         })
     },
     updateBook: function (req, res, next) {
-        if (req.user.roles.indexOf('admin') > -1) {
-            var updatedBookData = req.body;
+        var updatedBookData = req.body;
+        updatedBookData.id = req.params.id;
 
-            Book.update({_id: req.body._id}, updatedBookData, function () {
-                res.end();
-            })
-        }
-        else {
-            res.send({reason: 'You do not have permissions!'})
-        }
+        Book.update({_id: updatedBookData.id}, updatedBookData, function (err, data) {
+            if (err) {
+
+                return;
+            }
+
+            res.redirect('/');
+        })
     },
     addComment: function (req, res, next) {
         if (req.user) {
@@ -117,5 +122,17 @@ module.exports = {
         else {
             res.send({reason: 'You do not have permissions!'})
         }
+    }, getCreateBook: function (req, res, next) {
+        res.render('books/book-publish', {book: book});
+    }, getEditBook: function (req, res, next) {
+        Book.findOne({_id: req.params.id}).exec(function (err, book) {
+            if (err) {
+                console.log('Failed to create new book: ' + err);
+                return;
+            }
+
+            console.log(book);
+            res.render('books/book-edit', {book: book});
+        })
     }
 };

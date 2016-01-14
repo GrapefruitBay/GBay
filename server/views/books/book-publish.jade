@@ -3,45 +3,44 @@ extends ../index
 block main-content
     .container(ng-controller="BookPublishCtrl")
         .well
-            form.form-horizontal(name="newBookForm")
+            form.form-horizontal(name="newBookForm", method="post" action="/books")
                 fieldset
                     legend Add new book
                     .form-group
                         label.col-md-2.control-label(for="title") Title*
                         .col-md-4
-                            input.form-control(type="text",  placeholder="Title", ng-model="book.title", required)
+                            input.form-control(type="text",  placeholder="Title", name="title", required)
                         label.col-md-2.control-label(for="author") Author*
                         .col-md-4
-                            input.form-control(type="text",  placeholder="Author", ng-model="book.author", required)
+                            input.form-control(type="text",  placeholder="Author", name="author", required)
                     .form-group
                         label.col-md-2.control-label(for="isbn") ISBN*
                         .col-md-4
-                            input.form-control(type="number",  placeholder="ISBN", ng-model="book.ISBN", required)
+                            input.form-control(type="number",  placeholder="ISBN", name="ISBN", required)
                         label.col-md-2.control-label(for="quantity") Quantity*
                         .col-md-4
-                            input.form-control(type="number", ng-model="book.quantity", required)
-                    // TODO: add yearPicker
+                            input.form-control(type="number", name="quantity", required)
                     .form-group
                         label.col-md-2.control-label(for="year") Year published*
                         .col-md-4
-                            input.form-control(type="number",  placeholder="Year", ng-model="book.published", required)
+                            input.form-control(type="number",  placeholder="Year", name="published", required)
                         label.col-md-2.control-label(for="price") Price*
                         .col-md-4
-                            input.form-control(type="number", ng-model="book.price", required)
+                            input.form-control(type="number", name="price", required)
                     .form-group
                         label.col-md-2.control-label(for="genre") Genres*
                         .col-md-4
-                            input.form-control(type="text", placeholder="enter genre(s) separated by space", ng-model="book.genres", required)
+                            input.form-control(type="text", placeholder="enter genre(s) separated by space", name="genres", required)
                         label.col-md-2.control-label(for="tags") Tags*
                         .col-md-4
-                            input.form-control(type="text", placeholder="enter tag(s) separated by space", ng-model="book.tags", required)
+                            input.form-control(type="text", placeholder="enter tag(s) separated by space", name="tags", required)
                     .form-group
                         label.col-md-2.control-label(for="description") Description
                         .col-md-4
-                            textarea.form-control(rows="4", placeholder="Enter description", ng-model="book.description")
+                            textarea.form-control(rows="4", placeholder="Enter description", name="description")
                         label.col-md-2.control-label(for="image") Image URL*
                         .col-md-4
-                            input.form-control(type="text", placeholder="Image", ng-model="book.imageUrl", required)
+                            input.form-control(type="text", placeholder="Image", name="imageUrl", required)
                     .pull-right
-                        button.btn.btn-success(ng-click="publish(book)", ng-disabled="newBookForm.$invalid") Create
-                        a.btn.btn-danger(href="#/") Cancel
+                        button.btn.btn-success(type="submit", ng-click="publish(book)", ng-disabled="newBookForm.$invalid") Create
+                        a.btn.btn-danger(href="/") Cancel
