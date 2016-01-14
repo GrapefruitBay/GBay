@@ -3,62 +3,31 @@ var Book = require('mongoose').model('Book');
 module.exports = {
     getAllBooks: function (req, res, next) {
         var filterType = '',
-            maxPrice = 0;
+            maxPrice = Number.MAX_VALUE,
+            sort = {};
 
-        if (req.query.filtertext) {
-            filterType = req.query.filtertype;
-            var filterText = new RegExp(req.query.filtertext, 'i');
-
-            if (filterType === 'title') {
-                if (req.query.maxprice) {
-                    maxPrice = req.query.maxprice;
-
-                    Book.find({"price": {$lt: maxPrice}}).exec(function (err, books) {
-                        if (err) {
-                            console.log('Books could not be loaded: ' + err);
-                        }
-
-                        res.render('books/books-list', {books: books});
-                    })
-                } else {
-                    Book.find({title: filterText}).exec(function (err, books) {
-                        if (err) {
-                            console.log('Books could not be loaded: ' + err);
-                        }
-
-                        res.render('booksList', {books: books});
-                    })
-                }
-            } else {
-                if (req.query.maxprice) {
-                    maxPrice = req.query.maxprice;
-
-                    Book.find({price: {$lt: maxPrice}}, {author: filterText}).exec(function (err, books) {
-                        if (err) {
-                            console.log('Books could not be loaded: ' + err);
-                        }
-
-                        res.render('booksList', {books: books});
-                    })
-                } else {
-                    Book.find({author: filterText}).exec(function (err, books) {
-                        if (err) {
-                            console.log('Books could not be loaded: ' + err);
-                        }
-
-                        res.render('books/booksList', {books: books});
-                    })
-                }
-            }
-        } else {
-            Book.find({}).exec(function (err, books) {
-                if (err) {
-                    console.log('Books could not be loaded: ' + err);
-                }
-
-                res.render('books/books-list', {books: books});
-            })
+        filterType = req.query.filtertype;
+        var filterText = new RegExp(req.query.filtertext, 'i');
+        console.log(filterType);
+        if (filterType == "author") {
+            sort = {author: -1};
+        } else if (filterType == "title") {
+            sort = {title: -1};
         }
+
+        if (req.query.maxprice) {
+            maxPrice = req.query.maxprice;
+        }
+
+        Book
+            .find({price: {$lt: maxPrice}})
+            .sort(sort).exec(function (err, books) {
+            if (err) {
+                console.log('Books could not be loaded: ' + err);
+            }
+
+            res.render('books/books-list', {books: books});
+        })
     },
     getBookById: function (req, res, next) {
         Book.findOne({_id: req.params.id}).exec(function (err, book) {
