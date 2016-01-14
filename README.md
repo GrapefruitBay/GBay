@@ -1,76 +1,74 @@
-# Node.js Teamwork
+# GBay
+### Web application for online market, offers books, different stationaries, games and movies.
 
-This document describes the **teamwork assignment** for the **End-To-End JavaScript Applications (Node.js)** course at Telerik Academy.
+## Application structure
+!<img src="app_structure.jpg" />
 
-## Project Description
+### Users and roles
+The website offers different accessibility options and functionality for admins, users or visitors. Anyone can browse the site and view the home page, login and register screens, various ad details. Visitors can also search by different criteria.
 
-Design and implement an
-**End-To-End JavaScript application**. It can be a discussion forum, blog system, e-commerce site, online gaming site, social network, or any other web application by your choice.
+Admin users can create, update or delete other users and also to change their roles(They can ban users for example). They can also add, edit or delete different products.
 
-The application should have
-* **public part** (accessible without authentication)
-* **private part** (available for registered users) and
-* **administrative part** (available for administrators only).
+### Products
+Products have many properties that offer users various filters when searching. 
 
-### Public Part
+There are several views, showing details, search options, the paged and sorted results of various searches, etc.
+All products provide detailed and through information and photos.
 
-The **public part** of your projects should be **visible without authentication**.
-This public part could be the application start page, the user login and user registration forms, as well as the public data of the users, e.g. the blog posts in a blog system, the public offers in a bid system, the products in an e-commerce system, etc.
+## Routes and functionality
+```Javascript
+	app.get('/', controllers.home.getAllProducts);
+//USERS
+    app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
+    app.post('/api/users', controllers.users.createUser);
+    app.put('/api/users', auth.isAuthenticated, controllers.users.updateUser);
+	app.post('/login', auth.login);
+    app.post('/logout', auth.logout);
 
-### Private Part (User Area)
+    app.get('/signup', function (req, res) {
+        console.log("RENDER SIGNUP");
+        res.render('account/signup');
+    });
+//BOOKS
+    app.get('/books', controllers.books.getAllBooks);
+    app.post('/books', controllers.books.createBook);
+    app.get('/books/:id', controllers.books.getBookById);
+    app.put('/books/', controllers.books.updateBook);
+    app.delete('/books/:id', controllers.books.removeBook);
+    app.put('/books/:id', controllers.books.addComment);
+    app.put('/books/review/:id', controllers.books.addComment);
+//GAMES
+    app.get('/games', controllers.games.getAllGames);
+    app.get('/games/:id', controllers.games.getGameById);
+    app.post('/games', controllers.games.createGame);
+//MOVIES
+    app.get('/movies', controllers.movies.getAllMovies);
+    app.post('/movies', controllers.movies.createMovie);
+    app.get('/movies/:id', controllers.movies.getMovieById);
+    app.put('/movies/', controllers.movies.updateMovie);
+    app.delete('/movies/:id', controllers.movies.removeMovie);
+    app.put('/movies/:id', controllers.movies.addComment);
+    app.put('/movies/review/:id', controllers.movies.addComment);
+//STATIONERIES
+    app.get('/stationeries', controllers.stationeries.getAllStationeries);
+    app.post('/stationeries', controllers.stationeries.createStationery);
+    app.get('/stationeries/:id', controllers.stationeries.getStationeryById);
+    app.put('/stationeries/', controllers.stationeries.updateStationery);
+    app.delete('/stationeries/:id', controllers.stationeries.removeStationery);
+    app.put('/stationeries/:id', controllers.stationeries.addComment);
+    app.put('/stationeries/review/:id', controllers.stationeries.addComment);   
+//HOME
+    app.get('/api/*', function(req, res) {
+        res.status(404);
+        res.end();
+    });
 
-**Registered users** should have personal area in the web application accessible after **successful login**.
-This area could hold for example the user's profiles management functionality, the user's offers in a bid system, the user's posts in a blog system, the user's photos in a photo sharing system, the user's contacts in a social network, etc.
-
-### Administration Part
-
-**System administrators** should have administrative access to the system and permissions to administer all major information objects in the system, e.g. to create / edit / delete users and other administrators, to edit/ delete offers in a bid system, to edit / delete photos and album in a photo sharing system, to edit / delete posts in a blogging system, edit / delete products and categories in an e-commerce system, etc.
-
-## General Requirements
-
-Your Web application should use the following technologies, frameworks and development techniques:
-
-* At least **15 different dynamic web pages**
-* Use **NodeJS** (with **Express**) for the server (use an **MV*** pattern)
-* Use **AngularJS** for the client-side (do not create single-page applications)
-* You should use **Jade** template engine for generating the UI
-* Use **MongoDB** as database back-end and **Mongoose** to access your database
-	* Using Repository pattern/Unit of Work is not mandatory
-* Create at least **four tables with data** with **server-side paging** and **sorting**
-	* You may use **Kendo UI** Grid or generate your own HTML tables
-* Use responsive design
-	* It may be based on **Bootstrap**, **Materialize** or any other UI framework
-* Use **Passport** for managing **users** and **roles**
-	* Your registered users should have at least one of the two roles: **user** and **administrator**
-* Use at least **one AJAX form and/or WebSockets communication**
-* Write at least **20 unit tests** for your controllers logic
-* Apply **error handling** and **data validation** to avoid crashes when invalid data is entered
-* Prevent yourself from **security** holes (XSS, XSRF, Parameter Tampering, etc.)
-	* Handle correctly the **special HTML characters** and tags like `<script>`, `<br />`, etc.
-* Use GitHub and take advantage of the **branches** for team collaboration.
-* Brief **documentation** of the project and project architecture (as `.md` file)
-
-### Optional Requirements
-
-* Nice looking UI supporting of all modern and old Web browsers
-* Good usability (easy to use UI)
-
-### Deliverables
-
-Put the following in a **ZIP archive** and submit it (**each team member** submits the same file):
-* The **source code**
-	* **Don't submit the NPM packages**! They are not needed and take too much disk space.
-* The project documentation
-
-### Public Project Defense
-
-Each team will have to make a **public defense** of its work to the trainers (in 5-10 minutes). It includes:
-
-* Live **demonstration** of the developed web application (please prepare sample data).
-* Explain application structure and its back-end and front-end **source code**
-* Show the **commit logs** in the source control repository to prove a contribution from all team members.
-
-### Give Feedback about Your Teammates
-
-You will be invited to **provide feedback** about all your teammates, their attitude to this project, their technical skills, their team working skills, their contribution to the project, etc.
-The feedback is important part of the project evaluation so **take it seriously** and be honest.
+    app.get('*', function(req, res) {
+        res.render('index', {currentUser: req.user});
+    });
+```
+The application provides server-side paging, sorting, and filtering.
+There are several levels of validation of data - at the client, in some of the controllers, and in the data-base models.
+## Presentation
+The site presents the relevant information in an intuitive, easy to use way. The good user experience is enhanced by several tables and a Kendo UI Grid that offer multiple searching, sorting, and paging options.
+Most of every important user action results in a user-friendly success or error notification.
