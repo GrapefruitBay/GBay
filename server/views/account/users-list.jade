@@ -1,0 +1,18 @@
+extends ../index
+
+block main-content
+    .container
+        table.table
+            tr
+                th UserName
+                th Name
+                th Items in shopping cart
+                th(ng-show="identity.currentUser.isAdmin()")
+            each user in users
+                tr
+                    td #{user.username}
+                    td #{user.firstName} #{user.lastName}
+                    td #{user.cart.length}
+                    td(ng-show="identity.currentUser.isAdmin()")
+                        .pull-right
+                            a.btn.btn-warning(href="/") Edit/Remove

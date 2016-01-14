@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.post('/books/edit/:id', auth.isAuthenticated, controllers.books.updateBook);
     app.delete('/books/:id', controllers.books.removeBook);
     //app.put('/books/:id', controllers.books.addComment);
-    app.put('/books/review/:id', controllers.books.addComment);
+    app.put('/books/review/:id', auth.isAuthenticated,controllers.books.addComment);
     app.get('/books/edit/:id', auth.isAuthenticated, controllers.books.getEditBook);
 
     app.get('/games', controllers.games.getAllGames);

@@ -5,6 +5,7 @@ angular.module('app.controllers').controller('LoginCtrl', function($scope, $loca
         auth.login(user).then(function(success) {
             if (success) {
                 notifier.info('Successful login!');
+                $location.path('/');
             }
             else {
                 notifier.warning('Username/Password combination is not valid!');

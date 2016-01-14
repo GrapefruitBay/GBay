@@ -41,7 +41,9 @@ module.exports = {
                 next();
             }
             else {
+                console.log("U are not an admin");
                 res.status(403);
+                res.render('../views/unauthorized/unauthorized');
                 res.end();
             }
         }

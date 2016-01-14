@@ -14,7 +14,7 @@
                 span.caret
             ul.dropdown-menu
                 li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="/admin/users") Users
+                    a(href="/api/users") Users
                 li(ng-show="identity.currentUser.isAdmin()")
                     a(href="/books/edit") Publish book
                 li(ng-show="identity.isAuthenticated()")
