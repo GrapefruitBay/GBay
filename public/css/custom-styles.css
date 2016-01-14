@@ -28,13 +28,20 @@
 img.perfect-fit {
     width: 100%;
 }
+.center-oversized{
+    position: absolute;
+    top: -100px;
+    bottom: -100px;
+    left: -100px;
+    right: -100px;
+    margin: auto;
+}
 
 .img-container {
     width: 950px;
     height: 200px;
     display: inline-block;
     overflow: hidden;
-    margin-right: 0px;
     background-color: #ccc;
 }
 
