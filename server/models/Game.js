@@ -10,8 +10,6 @@ var game = function () {
         value: function () {
             item().init.call(this);
 
-            this.genre = String;
-
             return this;
         }
     });

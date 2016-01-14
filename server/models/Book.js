@@ -10,7 +10,6 @@ var book = function () {
         value: function () {
             item().init.call(this);
 
-            this.genres = [String];
             this.author = String;
             this.ISBN = Number;
             this.published = Number;

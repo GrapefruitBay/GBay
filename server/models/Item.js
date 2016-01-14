@@ -12,6 +12,7 @@ var item = function () {
             this.price = Number;
             this.quantity = Number;
             this.description = String;
+            this.genres = [String];
             this.reviews = [{
                 author: String,
                 content: String,
