@@ -14,8 +14,8 @@ block main-content
             .carousel-inner.z-depth-2(role='listbox')
                 // First slide
                 .item.active
-                    .view.overlay.hm-blue-slight.img-container
-                        a
+                    .view.overlay.hm-blue-slight.img-container.carousel-mask
+                        a.center-oversized
                             img.img-responsive.perfect-fit(src='{{books[Math.floor(Math.random() * books.length)].imageUrl}}', alt='slide1')
                             .mask.waves-effect.waves-light
                         .carousel-caption.hidden-xs
@@ -23,8 +23,8 @@ block main-content
                                 h5 {{$scope.randomReview = $scope.randomBook.reviews[Math.floor(Math.random() * $scope.randomBook.reviews.length)];}}
 
                 .item
-                    .view.overlay.hm-blue-slight.img-container
-                        a
+                    .view.overlay.hm-blue-slight.img-container.carousel-mask
+                        a.center-oversized
                             img.img-responsive.perfect-fit(src='http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg', alt='slide2')
                             .mask.waves-effect.waves-light
                         .carousel-caption.hidden-xs
@@ -32,8 +32,8 @@ block main-content
                                 h5 Lorem ipsum dolor sit amet
 
                 .item
-                    .view.overlay.hm-blue-slight.img-container
-                        a
+                    .view.overlay.hm-blue-slight.img-container.carousel-mask
+                        a.center-oversized
                             img.img-responsive.perfect-fit(src='http://www.i-love-cats.com/images/2015/04/12/cat-wallpaper-38.jpg', alt='slide3')
                             .mask.waves-effect.waves-light
                         .carousel-caption.hidden-xs

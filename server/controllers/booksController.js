@@ -12,7 +12,6 @@ module.exports = {
             if (filterType === 'title') {
                 if (req.query.maxprice) {
                     maxPrice = req.query.maxprice;
-                    //console.log("Titile and maxprice");
 
                     Book.find({"price": {$lt: maxPrice}}).exec(function (err, books) {
                         if (err) {
@@ -82,7 +81,7 @@ module.exports = {
 
             console.log("Create book controller: ");
             console.log(book);
-            res.render('books/book-publish', {book: book});
+            res.render('books/book-details', {book: book});
         })
     },
     updateBook: function (req, res, next) {
@@ -123,7 +122,7 @@ module.exports = {
             res.send({reason: 'You do not have permissions!'})
         }
     }, getCreateBook: function (req, res, next) {
-        res.render('books/book-publish', {book: book});
+        res.render('books/book-publish');
     }, getEditBook: function (req, res, next) {
         Book.findOne({_id: req.params.id}).exec(function (err, book) {
             if (err) {

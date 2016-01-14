@@ -10,7 +10,6 @@ var movie = function () {
         value: function () {
             item().init.call(this);
 
-            this.genres = String;
             this.director = String;
             this.actors = [String];
 
