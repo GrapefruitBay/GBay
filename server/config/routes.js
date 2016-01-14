@@ -10,13 +10,13 @@ module.exports = function(app) {
 
     app.get('/books', controllers.books.getAllBooks);
     app.post('/books', controllers.books.createBook);
-    app.get('/books/edit', controllers.books.getCreateBook);
+    app.get('/books/edit', auth.isAuthenticated, controllers.books.getCreateBook);
     app.get('/books/:id', controllers.books.getBookById);
-    app.post('/books/edit/:id', controllers.books.updateBook);
+    app.post('/books/edit/:id', auth.isAuthenticated, controllers.books.updateBook);
     app.delete('/books/:id', controllers.books.removeBook);
     //app.put('/books/:id', controllers.books.addComment);
     app.put('/books/review/:id', controllers.books.addComment);
-    app.get('/books/edit/:id', controllers.books.getEditBook);
+    app.get('/books/edit/:id', auth.isAuthenticated, controllers.books.getEditBook);
 
     app.get('/games', controllers.games.getAllGames);
     app.get('/games/:id', controllers.games.getGameById);
